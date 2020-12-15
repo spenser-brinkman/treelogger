@@ -4,8 +4,8 @@ This application allows users to keep an inventory of trees growing on a propert
 ### Installation & Startup
 1. Fork and clone this repository from GitHub into your coding environment of choice
 2. Run `bundle install` to ensure all required Ruby Gems are present
-3. Run `shotgun` to initialize TreeLogger on a server housed on your device
-4. In your web browser, navigate to TreeLogger's homepage at http://localhost:9393/
+3. Run `rails s` to initialize TreeLogger on a server housed on your device
+4. In your web browser, navigate to TreeLogger's homepage at http://localhost:3000/
 
 ### Flatiron Assessment Video & Blog
 link
