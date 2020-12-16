@@ -6,10 +6,35 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <br><div class="wrapper">
+
+      <header>
+        <span><img src="/images/logo.png" alt="TreeLogger Logo" width="auto" height="35"></span>
+        <span style="font-size:300%"><a class="homeLink" href="/"><strong>TreeLogger</strong></a></span>
+        <span style="float:right;">
+            <% if !logged_in? %>
+              <form action="/logout" method="get">
+                <% if request.env['PATH_INFO'] == "/trees" %>
+                  <button class="button small" formaction="/trees/new">Log New Tree</button>
+                <% else %>
+                  <button class="button small" formaction="/trees">Your Trees</button>
+                <% end %>
+                <button class="button small">Log Out</button>
+              </form>
+            <% end %>
+        </span>
+      </header>
+      <br>
+
+        <%= yield %>
+
+      <footer class="branding">
+        <small>&copy; 2020 <strong>TreeLogger</strong></small>
+      </footer>
+    </div>
   </body>
 </html>
