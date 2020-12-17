@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   
-  validates :name, presence: true, unless: ->(user){user.email.present?}
-  validates :email, presence: true, unless: ->(user){user.name.present?}
-  validates :email, uniqueness: true
+  validates :name, presence: true
   validates_confirmation_of :password
   
   has_secure_password
