@@ -3,4 +3,11 @@
 OR
 <br>
 Log in with your TreeLogger credentials:
-<%# <%= form_with model: @user do |f| %> %>
+<br>
+<%= form_with model: @user do |f| %>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %><br>
+  <%= f.text_field :password %><br>
+  <%= f.submit "Log In" %>
+<% end %>
