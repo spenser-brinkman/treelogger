@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   
-  helper_method :current_user, :logged_in?, :today?
+  helper_method :current_user
+  helper_method :logged_in?
+  helper_method :today?
+
+  before_action :authentication
+
   def current_user
     @current_user ||= User.find(session[:user_id])
   end
@@ -10,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authentication
-    redirect '/login' if !logged_in?
+    redirect_to root_path unless logged_in?
   end
 
   def authorize(resource)
