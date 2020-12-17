@@ -10,12 +10,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    redirect_to root_path
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
+      sessions[:user_id] = @user.id
+      redirect_to @user
+    else
+      render new_user(@user)
+    end
   end
 
   def googleAuth
     user = User.find_or_create_by(uid: access_token.uid) do |u|
       u.name = access_token.extra.raw_info.given_name
+      u.email = access_token.extra.raw_info.email
       u.password = SecureRandom.hex(12)
     end
     session[:user_id] = user.id
@@ -29,7 +36,7 @@ class SessionsController < ApplicationController
     user.google_refresh_token = refresh_token if refresh_token.present?
     user.save
 
-    redirect_to root_path
+    redirect_to @user
   end
 
   def destroy
