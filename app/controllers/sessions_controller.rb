@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     user.google_refresh_token = refresh_token if refresh_token.present?
     user.save
 
-    redirect_to @user
+    redirect_to user
   end
 
   def destroy
