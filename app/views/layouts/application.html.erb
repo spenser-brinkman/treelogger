@@ -15,21 +15,25 @@
       <header>
         
         <span style="font-size:300%">
+        <% if !logged_in? %>
           <a class="homeLink" href="/">
+        <% else %>
+          <a class="homeLink" href="<%= user_path(current_user) %>">
+        <% end %>
             <img src="/images/logo.png" alt="TreeLogger Logo" width="auto" height="35"><strong>TreeLogger</strong>
           </a>
         </span>
         <span style="float:right;">
-            <% if logged_in? %>
-              <form action="/logout" method="get">
-                <% if request.env['PATH_INFO'] == "/trees" %>
-                  <button class="button small" formaction="/trees/new">Log New Tree</button>
-                <% else %>
-                  <button class="button small" formaction="/trees">Your Trees</button>
-                <% end %>
-                <button class="button small">Log Out</button>
-              </form>
+        <% if logged_in? %>
+          <form action="/logout" method="get">
+            <% if request.env['PATH_INFO'] == "/trees" %>
+              <button class="button small" formaction="/trees/new">Log New Tree</button>
+            <% else %>
+              <button class="button small" formaction="/trees">Your Trees</button>
             <% end %>
+            <button class="button small">Log Out</button>
+          </form>
+        <% end %>
         </span>
       </header>
       <br>
