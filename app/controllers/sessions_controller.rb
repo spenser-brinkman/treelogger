@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
-      sessions[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect_to @user
     else
       render new_user(@user)
@@ -27,14 +27,8 @@ class SessionsController < ApplicationController
     end
     session[:user_id] = user.id
 
-    # The following chunk of code is not utilized but has been retained in case TreeLogger ends up implementing utilization of the Google API
-    # Access_token (defined in sessions/private) is used to authenticate requests made from the rails application to the google server
-    user.google_token = access_token.credentials.token
-    # Refresh_token to request new access_token
-    # Note: Refresh_token is only sent once during the first request
-    refresh_token = access_token.credentials.refresh_token
-    user.google_refresh_token = refresh_token if refresh_token.present?
-    user.save
+    # Private method. Not utilized but has been retained in case TreeLogger ends up implementing utilization of the Google API
+    set_google_tokens(user)
 
     redirect_to user
   end
@@ -50,4 +44,15 @@ class SessionsController < ApplicationController
   def access_token
     request.env["omniauth.auth"]
   end
+
+  def set_google_tokens(user)
+    # Access_token (defined in sessions/private) is used to authenticate requests made from the rails application to the google server
+    user.google_token = access_token.credentials.token
+    # Refresh_token to request new access_token
+    # Note: Refresh_token is only sent once during the first request
+    refresh_token = access_token.credentials.refresh_token
+    user.google_refresh_token = refresh_token if refresh_token.present?
+    user.save
+  end
+
 end
