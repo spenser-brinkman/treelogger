@@ -4,7 +4,20 @@ OR
 <br>
 Log in with your TreeLogger credentials:
 <br>
-<%= form_with model: @user do |f| %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prevented you from logging in:</h2>
+
+    <ul>
+      <% @user.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @user, url: login_path do |f| %>
   <%= f.label :email %><br>
   <%= f.text_field :email %><br>
   <%= f.label :password %><br>
