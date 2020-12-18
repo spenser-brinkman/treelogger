@@ -1,3 +1,9 @@
+<% if @user && @user.errors.any? %>
+  <% @user.errors.full_messages.uniq.each do |msg| %>
+    <p style="color:#FF0000;"><%= msg %></p>
+  <% end %>
+<% end %>
+
 <%= form_with model: @user do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
