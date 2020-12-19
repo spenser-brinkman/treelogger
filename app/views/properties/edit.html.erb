@@ -1,0 +1,14 @@
+Edit <%= @property.title %>
+<br>
+<br>
+<%= form_with model: @property do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<%= form_with model: @property, url: delete_property_path, method: 'get' do |f| %>
+  <%= f.hidden_field :id %>
+  <%= f.submit "Delete this property" %>
+<% end %>
