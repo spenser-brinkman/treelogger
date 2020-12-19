@@ -1,2 +1,10 @@
-<%= @property.address %>
-
+<%= @property.title %>
+<br>
+<%= link_to "Record a new survey", new_property_survey_path(@property) %>
+<br>
+<%= link_to "Edit this property", edit_property_path(@property) %>
+<br>
+<% @property.trees.each do |tree| %>
+  <%= tree.name %>
+  <br>
+<% end %>
