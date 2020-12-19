@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_205743) do
+ActiveRecord::Schema.define(version: 2020_12_18_232649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "properties", force: :cascade do |t|
-    t.string "address"
+    t.string "title"
     t.integer "user_id"
   end
 
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2020_12_17_205743) do
 
   create_table "surveys", force: :cascade do |t|
     t.integer "property_id"
-    t.string "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
   end
 
   create_table "tree_surveys", force: :cascade do |t|
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_205743) do
     t.string "foliage"
     t.text "comments"
     t.integer "species_id"
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
