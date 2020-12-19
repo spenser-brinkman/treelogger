@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :logged_in?
-  helper_method :today?
+  helper_method :today
+  helper_method :humanize_date
 
   before_action :authentication
 
@@ -24,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   def today
     DateTime.now.strftime("%Y-%m-%d")
+  end
+
+  def humanize_date(date)
+    date.strftime("%B %e, %Y")
   end
 
 end
