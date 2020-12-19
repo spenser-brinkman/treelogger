@@ -1,0 +1,7 @@
+Your properties:
+<br>
+<br>
+<% @properties.each do |prop| %>
+  <%= link_to prop.title, prop %> - Edit this property <%= link_to "here", edit_property_path(prop) %>
+  <br>
+<% end %>
