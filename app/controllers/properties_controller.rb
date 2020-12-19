@@ -5,7 +5,7 @@ class PropertiesController < ApplicationController
   end
     
   def index
-    @properties = Property.all
+    @properties = current_user.properties
   end
 
   def new
@@ -34,6 +34,10 @@ class PropertiesController < ApplicationController
     end
   end
   
+  def delete_property_confirmation
+    @property = Property.find_by(id: params[:property][:id])
+  end
+
   def destroy
     get_property
     @property.delete
@@ -47,6 +51,6 @@ class PropertiesController < ApplicationController
   end
     
   def property_params
-    params.require(:property).permit(:address)
+    params.require(:property).permit(:title)
   end
 end
