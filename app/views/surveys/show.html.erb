@@ -1,0 +1,7 @@
+Survey taken on <%= humanize_date(@survey.date) %>
+<br>
+<%= link_to "Log a tree", new_survey_tree_path(@survey) %>
+<br>
+<% @survey.trees.each do |tree| %>
+  <% link_to tree.species.name %> 
+<% end %>
