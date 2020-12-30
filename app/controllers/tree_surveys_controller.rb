@@ -1,2 +1,0 @@
-class TreeSurveysController < ApplicationController
-end
