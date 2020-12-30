@@ -4,7 +4,15 @@
 <br>
 <%= link_to "Edit this property", edit_property_path(@property) %>
 <br>
+<br>
+Trees:
 <% @property.trees.each do |tree| %>
-  <%= tree.name %>
-  <br>
+  <%= link_to tree.name, tree %><br>
+<% end %>
+<br>
+<br>
+Surveys:
+<br>
+<% @property.surveys.each do |survey| %>
+  <%= link_to humanize_date(survey.date), survey %><br>
 <% end %>
