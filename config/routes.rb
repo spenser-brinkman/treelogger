@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   
   resources :properties do
     resources :surveys, shallow: true do
-      resources :trees, shallow: true
+      resources :trees, shallow: true do
+        resources :inspections, shallow: true
+      end
     end
   end
   
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'delete_property', to: 'properties#delete_property_confirmation', as: 'delete_property'
   get 'choose_property_to_survey', to: 'surveys#choose_property_to_survey', as: 'start_new_survey'
-  # resources :tree_surveys
+  # resources :inspections
   # resources :properties
   resources :users
   # resources :trees
