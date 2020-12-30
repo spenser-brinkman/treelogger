@@ -1,7 +1,11 @@
 class Tree < ApplicationRecord
 
   belongs_to :species
-  has_many :tree_surveys
-  has_many :surveys, through: :tree_surveys
+  belongs_to :user
+  belongs_to :property
+  
+  has_many :inspections
+  has_many :surveys, through: :inspections
+  accepts_nested_attributes_for :species
 
 end

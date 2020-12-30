@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :properties
   has_many :surveys, through: :properties
-  has_many :tree_surveys, through: :surveys
-  has_many :trees, through: :tree_surveys
+  has_many :inspections, through: :surveys
+  has_many :trees, through: :inspections
   
 end
