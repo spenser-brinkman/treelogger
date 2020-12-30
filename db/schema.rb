@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_232649) do
+ActiveRecord::Schema.define(version: 2020_12_30_013953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inspections", force: :cascade do |t|
+    t.integer "survey_id"
+    t.integer "tree_id"
+    t.integer "height"
+    t.integer "dbh"
+    t.string "foliage"
+    t.text "comments"
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -26,25 +35,14 @@ ActiveRecord::Schema.define(version: 2020_12_18_232649) do
 
   create_table "surveys", force: :cascade do |t|
     t.integer "property_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.date "date"
   end
 
-  create_table "tree_surveys", force: :cascade do |t|
-    t.integer "survey_id"
-    t.integer "tree_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "trees", force: :cascade do |t|
-    t.integer "height"
-    t.integer "dbh"
-    t.string "foliage"
-    t.text "comments"
     t.integer "species_id"
     t.string "name"
+    t.integer "user_id"
+    t.integer "property_id"
   end
 
   create_table "users", force: :cascade do |t|
