@@ -1,7 +1,26 @@
 Survey taken on <%= humanize_date(@survey.date) %>
 <br>
+
+<% @survey.property.trees.each do |tree| %>
+  <%= link_to tree.name, tree %>
+<% end %>
+
 <%= link_to "Log a tree", new_survey_tree_path(@survey) %>
 <br>
-<% @survey.trees.each do |tree| %>
-  <% link_to tree.species.name %> 
+
+These trees have not been logged on this survey yet:<br>
+<%# <% byebug %> %>
+<% @survey.property.trees.each do |tree| %>
+  <% byebug %>
+  <% if !tree.surveys.include?(@survey) %>
+    <%= link_to tree.name, new_tree_inspection_path(tree) %><br>
+  <% end %>
 <% end %>
+
+<% @survey.inspections.each do |inspection| %>
+  <% link_to inspection.tree.species.name %> 
+<% end %>
+
+
+<%# select a tree to inspect from list of uninspected trees >> if !tree.surveys.include?(survey) %>
+<%# and a new tree to list with first inspection %>
