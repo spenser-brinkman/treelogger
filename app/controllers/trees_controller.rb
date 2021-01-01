@@ -9,20 +9,29 @@ class TreesController < ApplicationController
 
   def new
     @tree = Tree.new
-    @survey = Survey.find_by(id: params[:survey_id])
-    @tree.surveys << @survey
-    @species = Species.new
-    @tree.species = @species
+    @tree.species = Species.new
+    @property = Property.find_by(id: params[:property_id])
   end
 
   def create
     @survey = Survey.find_by(id: params[:survey_id])
-    byebug
-    @tree = Survey.find_by(id: params[:survey_id]).trees.build(tree_params)
-    if @tree.save
-      redirect_to @tree
+    @property = Property.find_by(id: params[:property_id])
+    @tree = @property.trees.build(tree_params)
+    @tree.user = current_user
+    select_or_create_species
+    @tree.species = @species
+    if @survey
+      if @tree.save
+        redirect_to @survey
+      else
+        redirect_to new_property_tree_path(@property, survey: @survey)
+      end
     else
-      render new_tree_path(@tree.survey)
+      if @tree.save
+        redirect_to @tree
+      else
+        redirect_to new_property_tree_path(@property)
+      end
     end
   end
 
@@ -42,11 +51,25 @@ class TreesController < ApplicationController
   private
   
   def tree_params
-    params.require(:tree).permit(:name, :height, :dbh, :foliage, :comments)
+    params.require(:tree).permit(:name, :species_id)
   end
 
   def get_tree
-    @tree = current_user.trees.find_by(id: params[:id])
+    @tree = Tree.find_by(id: params[:id])
+  end
+
+  def select_or_create_species
+    if params[:tree][:species_id] == "" && params[:tree][:species_attributes][:name] != ""         # If user wants to enter new species
+      @species = Species.create(name: params[:tree][:species_attributes][:name])
+    elsif params[:tree][:species_id] == "" && params[:tree][:species_attributes][:name] == ""      # If user does not select a species
+      @species = Species.find_by_name("Unknown")
+    else                                                                                           # If user simply selects from dropdown
+      @species = Species.find(params[:tree][:species_id])
+    end
+  end
+
+  def last_inspection
+    @tree.inspections.last
   end
 
 end
