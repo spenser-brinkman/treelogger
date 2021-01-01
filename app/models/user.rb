@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :properties
+  has_many :trees, through: :properties
   has_many :surveys, through: :properties
   has_many :inspections, through: :surveys
-  has_many :trees, through: :inspections
   
 end
