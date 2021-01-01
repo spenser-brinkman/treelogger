@@ -1,0 +1,11 @@
+<%= @tree.name %><br>
+<% byebug %>
+<% if !@tree.inspections.empty? %>
+  <%= @tree.inspections.last.height %><br>
+  <%= @tree.inspections.last.dbh %><br>
+  <%= @tree.inspections.last.foliage %><br>
+  <%= @tree.inspections.last.comments if @tree.inspections.last.comments %>
+<% else %>
+  This tree has not yet been inspected!<br>
+  <%= link_to "Follow this link to choose a survey for this tree", property_surveys_path(@tree.property) %>
+<% end %>
