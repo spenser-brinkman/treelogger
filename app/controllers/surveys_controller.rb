@@ -10,7 +10,7 @@ class SurveysController < ApplicationController
 
   def new
     @property = Property.find_by(id: params[:property_id])
-    @survey = Survey.new
+    @survey = @property.surveys.build
   end
 
   def create
