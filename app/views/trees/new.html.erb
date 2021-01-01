@@ -1,31 +1,17 @@
-<% byebug %>
 New Tree
 <br>
 <br>
-<%= form_with model: @tree, url: survey_trees_path(@tree.surveys) do |f| %>
+<%= form_with model: @tree, url: property_trees_path(@property, survey_id: params[:survey]) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <br>
-  <%= f.label :height %>
-  <%= f.text_field :height %>
-  <br>
-  <%= f.label :dbh %>
-  <%= f.text_field :dbh %>
-  <br>
-  <%= f.label :foliage %>
-  <%= f.select :foliage, ["Abundant", "Normal", "Sparse", "Bare/Dead"], include_blank: "- Make a selection -" %>
-  <br>
-  <%= f.label :comments %>
-  <%= f.text_area :comments %>
-  <br>
-  <%= f.label :species %>
-  <%= f.collection_select :species, Species.all, :id, :name, include_blank: "Other" %>
-  <br>
-  <br>
-  <%= f.fields_for :species do |sf| %>
-    <%= sf.label :name, "Species" %>
-    <%= sf.text_field :name %>
+  <br><br><br>
+  <%= f.label :species_id %>
+  <%= f.collection_select :species_id, Species.all, :id, :name, include_blank: "Other (fill in box below)" %>
+  <br><br>
+  <%= f.fields_for :species, Species.new do |sf| %>
+    <%= sf.label :name, "New species" %>
+    <%= sf.text_field :name, placeholder: "Fill if species is not listed" %>
   <% end %>
-  <br>
+  <br><br>
   <%= f.submit "Start new survey" %>
 <% end %>
