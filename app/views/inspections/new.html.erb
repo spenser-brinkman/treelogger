@@ -1,0 +1,16 @@
+Inspection form for <%= @tree.name %>
+<%= form_with model: @inspection, url: survey_inspections_path(@survey, tree_id: @tree) do |f| %>
+  <%= f.label :height %>
+  <%= f.number_field :height %>
+  <br>
+  <%= f.label :dbh %>
+  <%= f.number_field :dbh %>
+  <br>
+  <%= f.label :foliage %>
+  <%= f.select :foliage, ["Abundant", "Normal", "Sparse", "Bare/Dead"], include_blank: "- Make a selection -" %>
+  <br>
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+  <br>
+  <%= f.submit "Log tree" %>
+<% end %>
