@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      render new_user(@user)
+      render new_user_path(@user)
     end
   end
 
