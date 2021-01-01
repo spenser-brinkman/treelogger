@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   
   resources :properties do
+    resources :trees, shallow: true do
+      resources :inspections, shallow: true
+    end
     resources :surveys, shallow: true do
-      resources :trees, shallow: true do
-        resources :inspections, shallow: true
-      end
+      resources :inspections, shallow: true
     end
   end
   
+  resources :trees, only: [:show, :edit, :update, :destroy]
   resources :surveys, only: [:show, :edit, :update, :destroy]
 
   get 'delete_property', to: 'properties#delete_property_confirmation', as: 'delete_property'
