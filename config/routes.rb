@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'sessions#welcome'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  get 'auth/:provider/callback', to: 'sessions#googleAuth', as: 'google_login'
+  get 'auth/google_oauth2/callback', to: 'sessions#googleAuth', as: 'google_login'
   get 'logout', to: 'sessions#destroy'
   get 'auth/failure', to: redirect('/')
   
