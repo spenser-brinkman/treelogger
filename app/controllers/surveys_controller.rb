@@ -23,12 +23,27 @@ class SurveysController < ApplicationController
   end
 
   def edit
+    @survey = Survey.find_by(id: params[:id])
   end
 
   def update
+    get_survey
+    if @survey.update(survey_params)
+      redirect_to @survey
+    else
+      render edit_survey(@survey)
+    end
+  end
+
+  def delete_survey_confirmation
+    @survey = Survey.find_by(id: params[:survey][:id])
   end
 
   def destroy
+    get_survey
+    @property = @survey.property
+    @survey.delete
+    redirect_to property_path(@property)
   end
 
   def choose_property_to_survey
