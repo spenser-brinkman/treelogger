@@ -1,0 +1,14 @@
+Edit Survey take on <%= humanize_date(@survey.date) %>
+<br>
+<br>
+<%= form_with model: @survey do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date, min: "2020-01-01", max: today, value: @survey.date %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<%= form_with model: @survey, url: delete_survey_path, method: 'get' do |f| %>
+  <%= f.hidden_field :id %>
+  <%= f.submit "Delete this survey" %>
+<% end %>
