@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  skip_before_action :authentication, only: [:welcome, :new, :create]
+  skip_before_action :authentication
 
   def welcome
   end
@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      render new_user_path(@user)
+      @user = User.new(email: params[:user][:email])
+      render 'new'
     end
   end
 
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
     end
     session[:user_id] = user.id
 
-    # Private method. Not utilized but has been retained in case TreeLogger ends up implementing utilization of the Google API
+    # Private method. Not utilized but has been retained in case TreeLogger ends up implementing use of the Google API
     set_google_tokens(user)
 
     redirect_to user
