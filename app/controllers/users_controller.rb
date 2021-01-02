@@ -4,10 +4,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @errors = @user.errors
   end
 
   def create
     @user = User.new(user_params)
+    @errors = @user.errors
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user
