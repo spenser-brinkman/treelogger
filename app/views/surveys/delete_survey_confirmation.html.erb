@@ -1,9 +1,9 @@
-Are you sure you want to delete this survey?
-<br>
-<br>
-<%= form_with model: @survey, url: "/surveys/#{@survey.id}", method: 'delete' do |f| %>
-  <%= f.submit "Yes, delete this survey" %>
-<% end %>
+<h2><center>Are you sure you want to delete this survey?</h2>
 
-# turn form on line 4 into button
-# add second button to decline deletion and reroute back to edit survey page
+<div>
+  <center><%= button_to "Yes, delete this survey", @survey, method: "delete", class: "button" %>
+</div>
+
+<div>
+  <center><%= button_to "No, go back", edit_survey_path(@survey), method: "get", class: "button" %>
+</div>
