@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :surveys, only: [:show, :edit, :update, :destroy]
 
   get 'delete_property', to: 'properties#delete_property_confirmation', as: 'delete_property'
+  get 'delete_survey', to: 'surveys#delete_survey_confirmation', as: 'delete_survey'
   get 'choose_property_to_survey', to: 'surveys#choose_property_to_survey', as: 'start_new_survey'
   # resources :inspections
   # resources :properties
