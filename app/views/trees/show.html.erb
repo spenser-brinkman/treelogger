@@ -1,11 +1,15 @@
-<%= @tree.name %><br>
-<% byebug %>
+<h2><%= @tree.name %><br></h2>
+
 <% if !@tree.inspections.empty? %>
-  <%= @tree.inspections.last.height %><br>
-  <%= @tree.inspections.last.dbh %><br>
-  <%= @tree.inspections.last.foliage %><br>
-  <%= @tree.inspections.last.comments if @tree.inspections.last.comments %>
+  <%= last_survey(@tree).height %><br>
+  <%= last_survey(@tree).dbh %><br>
+  <%= last_survey(@tree).foliage %><br>
+  <%= last_survey(@tree).comments if last_survey(@tree).comments %>
+
 <% else %>
-  This tree has not yet been inspected!<br>
-  <%= link_to "Follow this link to choose a survey for this tree", property_surveys_path(@tree.property) %>
+  This tree has not yet been inspected! You'll have to log this tree in a survey before anything will be shown on this page.
 <% end %>
+
+<br><br>
+
+Back to <%= link_to @tree.property.title, property_path(@tree.property) %>
