@@ -1,5 +1,7 @@
 class TreesController < ApplicationController
 
+  helper_method :last_survey
+
   def index
   end
 
@@ -48,6 +50,11 @@ class TreesController < ApplicationController
     @properties = current_user.properties.all
   end
   
+  def last_survey(tree)
+    byebug
+    tree.inspections.surveys.where(date: tree.surveys.maximum("date"))
+  end
+  
   private
   
   def tree_params
@@ -68,8 +75,5 @@ class TreesController < ApplicationController
     end
   end
 
-  def last_inspection
-    @tree.inspections.last
-  end
 
 end
