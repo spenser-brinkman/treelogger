@@ -132,6 +132,30 @@
     text-decoration: inherit;
   }
 
+  .field_with_errors {
+    display: inline;
+  }
+
+  .field_with_errors input {
+    border: solid;
+    border-color: red;
+  }
+
+  .field_with_errors input::-webkit-input-placeholder {
+    color: red !important;
+  }
+    
+  .field_with_errors input:-moz-placeholder { /* Firefox 18- */
+    color: red !important;  
+  }
+    
+  .field_with_errors input::-moz-placeholder {  /* Firefox 19+ */
+    color: red !important;  
+  }
+    
+  .field_with_errors input:-ms-input-placeholder {  
+    color: red !important;  
+  }
 
 }
 
