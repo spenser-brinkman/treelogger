@@ -32,7 +32,8 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       redirect_to @property
     else
-      render edit_property(@property)
+      flash.alert = @property.errors.full_messages
+      redirect_to edit_property_path(@property)
     end
   end
   
