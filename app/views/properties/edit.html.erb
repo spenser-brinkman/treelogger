@@ -1,6 +1,15 @@
 <center>
   <h2>Edit <%= @property.title %></h2>
 
+  <div style="color:#FF0000">
+  <% if flash.alert.present? %>
+    <% flash.alert.each do |err| %>
+      <%= err %><br>
+    <% end %>
+    <br>
+  <% end %>
+  </div>
+
   <%= form_with model: @property do |f| %>
     <%= f.label :title, "Name: " %>
     <%= f.text_field :title %>
