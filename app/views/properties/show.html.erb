@@ -1,18 +1,11 @@
-<%= @property.title %>
-<br>
-<%= link_to "Record a new survey", new_property_survey_path(@property) %>
-<br>
-<%= link_to "Edit this property", edit_property_path(@property) %>
-<br>
-<br>
-Trees:
-<% @property.trees.each do |tree| %>
-  <%= link_to tree.name, tree %><br>
-<% end %>
-<br>
-<br>
-Surveys:
-<br>
-<% @property.surveys.each do |survey| %>
-  <%= link_to humanize_date(survey.date), survey %><br>
-<% end %>
+<center>
+  <h2><%= @property.title %></h2>
+
+  <%= link_to "Surveys", property_surveys_path(@property), class: "button" %>
+
+  <%= link_to "Trees", property_trees_path(@property), class: "button" %>
+
+  <%= link_to "New survey", new_property_survey_path(@property), class: "button" %>
+  
+  <%= link_to "Edit property", edit_property_path(@property), class: "button" %>
+</center>
