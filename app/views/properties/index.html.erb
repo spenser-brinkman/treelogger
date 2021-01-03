@@ -1,7 +1,13 @@
-Your properties:
-<br>
-<br>
-<% @properties.each do |prop| %>
-  <%= link_to prop.title, prop %> - Edit this property <%= link_to "here", edit_property_path(prop) %>
-  <br>
+<center>
+<h2>Your Properties</h2>
+
+<%= link_to "New Property", new_property_path, class: "button small" %>
+
+<% if !@properties.empty? %>
+  <br><br><br>
+  <% @properties.each do |prop| %>
+    <%= link_to prop.title, prop, class: "button" %>
+    <br>
+  <% end %>
 <% end %>
+</center>
