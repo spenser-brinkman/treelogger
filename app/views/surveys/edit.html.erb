@@ -8,10 +8,5 @@
   <%= f.submit "Update Survey Date", class: "button" %>
 <% end %>
 
-<%= button_to "Delete this survey", @survey, method: :delete, class: "button", confirm: "Are you sure you want to delete this survey?" %>
-
-<%= form_with model: @survey, url: delete_survey_path, method: 'get' do |f| %>
-  <%= f.hidden_field :id %>
-  <%= f.submit "Delete this survey" %>
-<% end %>
+<%= link_to "Delete this survey", delete_survey_path(survey: @survey), class: "button small discrete" %>
 </center>
