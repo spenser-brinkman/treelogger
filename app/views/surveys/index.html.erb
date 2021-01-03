@@ -1,0 +1,7 @@
+<center>
+<h2>Surveys for <%= @property.title %></h2>
+
+<% @surveys.each do |survey| %>
+  <%= link_to humanize_date(survey.date), survey, class: "button" %>
+<% end %>
+</center>
