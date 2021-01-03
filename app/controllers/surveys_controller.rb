@@ -1,7 +1,8 @@
 class SurveysController < ApplicationController
 
   def index
-    @surveys = current_user.surveys
+    @property = Property.find_by(id: params[:property_id])
+    @surveys = @property.surveys
   end
 
   def show
