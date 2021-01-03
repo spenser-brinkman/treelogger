@@ -1,6 +1,21 @@
-<h2>Add a property</h2>
-Assign a title to the new property. This can be the address, a building name, a neighborhood, or anything else to differentiate this property from other properties on your account.
+<center>
+<h2>New Property</h2>
+
+Assign a name to the new property<br>
+(e.g., an address, business name, or neighborhood)<br>
+to differentiate this property from others on your account.<br>
+
 <%= form_with model: @property do |f| %>
-  <%= f.text_field :title %><br>
-  <%= f.submit %>
+
+  <% if @errors[:title].empty? %>
+    <%= f.label :title, "&nbsp;".html_safe %><br>
+  <% else %>
+    <%= f.label :title, "You must assign a name", style: "color: red" %><br>
+  <% end %>
+  <%= f.text_field :title, placeholder: "Property Name", style: "text-align: center;", class: "non-red-error" %>
+  
+  <br><br>
+
+  <%= f.submit "Create Property", class: "button" %>
 <% end %>
+</center>
