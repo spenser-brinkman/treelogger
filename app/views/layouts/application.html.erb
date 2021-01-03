@@ -26,11 +26,8 @@
         <span style="float:right;">
         <% if logged_in? %>
           <form action="/logout" method="get">
-            <% if request.env['PATH_INFO'] != "/properties" %>
-              <button class="button small" formaction="/properties">Properties</button>
-            <% else %>
-              <button class="button small" formaction="<%= user_path(current_user) %>">Home Page</button>
-            <% end %>
+            <button class="button small" formaction="/properties">Properties</button>
+            <button class="button small" formaction="<%= user_path(current_user) %>">Home Page</button>
             <button class="button small">Log Out</button>
           </form>
         <% end %>
