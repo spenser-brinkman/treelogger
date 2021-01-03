@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :users
-  
   root to: 'sessions#welcome'
+  
+  resources :users
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'auth/google_oauth2/callback', to: 'sessions#googleAuth', as: 'google_login'
-  get 'logout', to: 'sessions#destroy'
   get 'auth/failure', to: redirect('/')
+  get 'logout', to: 'sessions#destroy'
   
   resources :properties do
     resources :trees, shallow: true do
