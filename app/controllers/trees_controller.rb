@@ -1,6 +1,7 @@
 class TreesController < ApplicationController
 
   helper_method :last_survey
+  helper_method :current_survey
 
   def index
   end
@@ -54,7 +55,11 @@ class TreesController < ApplicationController
   end
   
   def last_survey(tree)
-    tree.inspections.surveys.where(date: tree.surveys.maximum("date"))
+    tree.surveys.find_by(date: tree.surveys.maximum("date")).inspections.find_by(tree_id: tree.id)
+  end
+  
+  def current_survey(tree)
+    tree.surveys.find_by(id: params[:survey]).inspections.find_by(tree_id: tree.id)
   end
   
   private
