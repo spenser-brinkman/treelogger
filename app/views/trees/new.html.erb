@@ -1,17 +1,35 @@
-New Tree
-<br>
-<br>
-<%= form_with model: @tree, url: property_trees_path(@property, survey_id: params[:survey]) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br><br><br>
-  <%= f.label :species_id %>
-  <%= f.collection_select :species_id, Species.all, :id, :name, include_blank: "Other (fill in box below)" %>
-  <br><br>
-  <%= f.fields_for :species, Species.new do |sf| %>
-    <%= sf.label :name, "New species" %>
-    <%= sf.text_field :name, placeholder: "Fill if species is not listed" %>
+<center>
+<h2>New Tree</h2>
+
+Give an identifying name to your tree<br>
+(e.g., "Front Yard Maple" or "Valley Oak #46")<br>
+<%= form_with model: @tree, url: property_trees_path(@property, survey: params[:survey]) do |f| %>
+  <% if @errors[:name].empty? %>
+    <%= f.label :name, "&nbsp;".html_safe %><br>
+  <% else %>
+    <%= f.label :name, "You must name the tree", style: "color: red" %><br>
   <% end %>
+  <%= f.text_field :name, placeholder: "Name", style: "text-align: center;", class: "non-red-error" %>
+
+  <br><br><br>
+
+  Assign a species by selecting from the dropdown box<br>
+  or by entering a new species into the text box.<br>
+  If unidentified, select "Unknown Species" from the dropdown.<br>
+  <% if @errors[:species].empty? %>
+    <%= f.label :species, "&nbsp;".html_safe %><br>
+  <% else %>
+    <%= f.label :species, "You must select a species", style: "color: red" %><br>
+  <% end %>
+  <%= f.collection_select :species, Species.all, :id, :name, include_blank: "Select a species" %>
+  or
+  <%= f.fields_for :species, Species.new do |sf| %>
+    <%= sf.label :name, "&nbsp;".html_safe %><br>
+    <%= sf.text_field :name, placeholder: "Enter a new species", style: "text-align: center;" %>
+  <% end %>
+
   <br><br>
-  <%= f.submit "Start new survey" %>
+
+  <%= f.submit "Create New Tree", class: "button" %>
 <% end %>
+</center>
