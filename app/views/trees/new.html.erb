@@ -7,9 +7,9 @@ Give an identifying name to your tree<br>
   <% if @errors[:name].empty? %>
     <%= f.label :name, "&nbsp;".html_safe %><br>
   <% else %>
-    <%= f.label :name, "You must name the tree", style: "color: red" %><br>
+    <%= f.label :name, "You must assign a name", style: "color: red" %><br>
   <% end %>
-  <%= f.text_field :name, placeholder: "Name", style: "text-align: center;", class: "non-red-error" %>
+  <%= f.text_field :name, placeholder: "Tree Name", style: "text-align: center;", class: "non-red-error" %>
 
   <br><br><br>
 
@@ -30,6 +30,6 @@ Give an identifying name to your tree<br>
 
   <br><br>
 
-  <%= f.submit "Create New Tree", class: "button" %>
+  <%= f.submit "Create Tree", class: "button" %>
 <% end %>
 </center>
