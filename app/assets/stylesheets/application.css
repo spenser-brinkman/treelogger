@@ -122,6 +122,12 @@
     font-size: 12px;
   }
 
+  .discrete {
+    float: right;
+    padding: 2px 5px;
+    font-size: 11px;
+  }
+
   button:hover {
     background-color: white;
     color: black
@@ -141,22 +147,19 @@
     border-color: red;
   }
 
-  .field_with_errors input::-webkit-input-placeholder {
-    color: red !important;
+  .field_with_errors select {
+    border: solid;
+    border-color: red;
   }
-    
-  .field_with_errors input:-moz-placeholder { /* Firefox 18- */
-    color: red !important;  
-  }
-    
-  .field_with_errors input::-moz-placeholder {  /* Firefox 19+ */
-    color: red !important;  
-  }
-    
-  .field_with_errors input:-ms-input-placeholder {  
-    color: red !important;  
-  }
+  
+ .field_with_errors input::placeholder {
+   color: red;
+ }
 
+  .field_with_errors input.non-red-error::placeholder {
+    color: grey;
+  }
+   
 }
 
 @media screen and (max-width: 600px) {
