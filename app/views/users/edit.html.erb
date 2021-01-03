@@ -1,0 +1,56 @@
+<center>
+<h2>Edit Profile</h2>
+
+<div style="color:#FF0000">
+  <% if @errors.present? && @errors.present? && @errors["name"].present? %>
+    <%= "Name " + oxfordize_list(@errors["name"]) %><br><br>
+  <% end %>
+</div>
+
+<%= form_with model: current_user do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <br>
+  <%= f.submit "Update Name", class: "button" %>
+  <br><br>
+<% end %>
+
+<h2></h2>
+
+<div style="color:#FF0000">
+  <% if @errors.present? && @errors["email"].present? %>
+    <%= "Email " + oxfordize_list(@errors["email"]) %><br><br>
+  <% end %>
+</div>
+
+<%= form_with model: current_user do |f| %>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  <br>
+  <%= f.submit "Update Email", class: "button" %>
+  <br><br>
+<% end %>
+
+<h2></h2>
+
+<div style="color:#FF0000">
+  <% if @errors.present? && @errors["password"].present? %>
+    <%= "Password " + oxfordize_list(@errors["password"]) %><br><br>
+  <% end %>
+
+  <% if @errors.present? && @errors["password_confirmation"].present? %>
+    <%= "Password confirmation " + oxfordize_list(@errors["password_confirmation"]) %><br><br>
+  <% end %>
+</div>
+
+<%= form_with model: current_user do |f| %>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <br>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %><br>
+  <br>
+  <%= f.submit "Update Password", class: "button" %>
+<% end %>
+
+</center>
