@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  
+  resources :users
+  
   root to: 'sessions#welcome'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -23,9 +25,5 @@ Rails.application.routes.draw do
   get 'delete_survey', to: 'surveys#delete_survey_confirmation', as: 'delete_survey'
   get 'delete_user', to: 'users#delete_user_confirmation', as: 'delete_user'
   get 'new_survey', to: 'surveys#new_survey', as: 'start_new_survey'
-  # resources :inspections
-  # resources :properties
-  resources :users
-  # resources :trees
 
 end
