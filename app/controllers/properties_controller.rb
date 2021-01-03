@@ -10,13 +10,15 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    @errors = @property.errors
   end
-
+  
   def create
     @property = current_user.properties.build(property_params)
     if @property.save
       redirect_to @property
     else
+      @errors = @property.errors
       render new_property_path(@property)
     end
   end
