@@ -9,5 +9,6 @@ class Tree < ApplicationRecord
   accepts_nested_attributes_for :species
 
   validates_presence_of :name
+  validates_presence_of :species
 
 end
