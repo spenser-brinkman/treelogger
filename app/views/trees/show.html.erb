@@ -1,15 +1,16 @@
+<center>
 <h2><%= @tree.name %><br></h2>
 
 <% if !@tree.inspections.empty? %>
-  <%= last_survey(@tree).height %><br>
-  <%= last_survey(@tree).dbh %><br>
-  <%= last_survey(@tree).foliage %><br>
-  <%= last_survey(@tree).comments if last_survey(@tree).comments %>
-
+  Height: <%= params[:survey] ? current_survey(@tree).height : last_survey(@tree).height %> feet<br>
+  DBH: <%= params[:survey] ? current_survey(@tree).dbh : last_survey(@tree).dbh %> inches<br>
+  Foliage: <%= params[:survey] ? current_survey(@tree).foliage : last_survey(@tree).foliage %><br>
+  Comments: <%= params[:survey] ? current_survey(@tree).comments : last_survey(@tree).comments %><br>
 <% else %>
   This tree has not yet been inspected! You'll have to log this tree in a survey before anything will be shown on this page.
 <% end %>
 
 <br><br>
 
-Back to <%= link_to @tree.property.title, property_path(@tree.property) %>
+<%= link_to "Back to #{@tree.property.title}", property_path(@tree.property), class: "button" %>
+</center>
