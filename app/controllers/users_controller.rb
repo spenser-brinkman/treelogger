@@ -23,17 +23,23 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @errors = flash.alert
   end
-
+  
   def update
+    if current_user.update(user_params)
+      redirect_to current_user
+    else
+      flash.alert = current_user.errors
+      redirect_to edit_user_path(current_user)
+    end
   end
-
+  
   def delete_user_confirmation
   end
 
   def destroy
     current_user.delete
-    byebug
     redirect_to root_path
   end
 
