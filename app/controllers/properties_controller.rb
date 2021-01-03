@@ -35,7 +35,7 @@ class PropertiesController < ApplicationController
   end
   
   def delete_property_confirmation
-    @property = Property.find_by(id: params[:property][:id])
+    @property = Property.find_by(id: params[:property])
   end
 
   def destroy
