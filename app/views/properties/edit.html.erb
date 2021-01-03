@@ -1,14 +1,13 @@
-Edit <%= @property.title %>
-<br>
-<br>
-<%= form_with model: @property do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
-  <%= f.submit %>
-<% end %>
+<center>
+  <h2>Edit <%= @property.title %></h2>
 
-<%= form_with model: @property, url: delete_property_path, method: 'get' do |f| %>
-  <%= f.hidden_field :id %>
-  <%= f.submit "Delete this property" %>
-<% end %>
+  <%= form_with model: @property do |f| %>
+    <%= f.label :title, "Name: " %>
+    <%= f.text_field :title %>
+    <br><br>
+    <%= f.submit "Update Property", class: "button" %>
+  <% end %>
+  <br>
+  <%= link_to "Delete this property", delete_property_path(property: @property), class: "button small discrete" %>
+
+</center>
