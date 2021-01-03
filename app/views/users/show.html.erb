@@ -1,15 +1,9 @@
-Name: <%= current_user.name %><br>
-Email: <%= current_user.email %><br>
-User ID: <%= current_user.id %><br>
-Google token: <%= current_user.google_token %><br>
-Google refresh: <%= current_user.google_refresh_token %><br>
-UID: <%= current_user.uid %><br>
-<br>
-Properties: <br>
-<% current_user.properties.each do |prop| %>
-  <%= link_to prop.title, prop %><br>
-<% end %>
-<br>
-<%= link_to "Add a new property", new_property_path %>
-<br>
-<%= link_to "Record a new survey", start_new_survey_path %>
+<center>
+  <h2><%= greet %><%= current_user.name %>!</h2>
+
+  <%= link_to "Properties", properties_path, class: "button" %>
+
+  <%= link_to "New survey", start_new_survey_path, class: "button" %>
+
+  <%= link_to "Edit account", edit_user_path(current_user), class: "button" %>
+</center>
