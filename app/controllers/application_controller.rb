@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :today
   helper_method :humanize_date
+  helper_method :oxfordize_list
 
   before_action :authentication
 
@@ -29,6 +30,12 @@ class ApplicationController < ActionController::Base
 
   def humanize_date(date)
     date.strftime("%B %e, %Y")
+  end
+
+  def oxfordize_list(list)
+    return list.join(' and ') if list.size < 3
+    list[-1] = "and " + list[-1]
+    list.join(', ')
   end
 
 end
