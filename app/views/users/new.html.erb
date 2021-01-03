@@ -1,34 +1,43 @@
 <center>
 <h2>Create a new TreeLogger account</h2>
-</center>
 
-<% if @user.errors[:email].include?("has already been taken") %>
-  <div style="text-align:center; color:#FF0000">
-    The email you entered &mdash; <%= @user.email %> &mdash; is already in use
-  </div>
-  <br>
-<% end %>
+<%# Explicit ordering for error section. Built a method to dynamically display but couldn't get ordering right. %>
+<div style="color:#FF0000">
+  <% if @errors.present? %>
+    <% if @errors[:name].present? %>
+      <%= "Name " + oxfordize_list(@errors[:name]) %><br>
+    <% end %>
 
-<center>
+    <% if @errors[:email].present? %>
+      <%= "Email " + oxfordize_list(@errors[:email]) %><br>
+    <% end %>
+
+    <% if @errors[:password].present? %>
+      <%= "Password " + oxfordize_list(@errors[:password]) %><br>
+    <% end %>
+
+    <% if @errors[:password_confirmation].present? %>
+      <%= "Password confirmation " + oxfordize_list(@errors[:password_confirmation]) %><br>
+    <% end %>
+    <br>
+  <% end %>
+</div>
+
 <%= form_with model: @user do |f| %>
-  <%= f.label :name %>
-  <br>
-  <%= f.text_field :name, placeholder: @errors[:name] ? @errors[:name].join(', ') : "" %><br>
-  <br>
-
-  <%= f.label :email %>
-  <br>
-  <%= f.text_field :email, placeholder: @errors[:email] ? @errors[:email].join(', ') : "" %><br>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
   <br>
 
-  <%= f.label :password %>
-  <br>
-  <%= f.password_field :password, placeholder: @errors[:password] ? @errors[:password].join(', ') : "" %><br>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
   <br>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
   <br>
-  <%= f.password_field :password_confirmation, placeholder: @errors[:password_confirmation] ? @errors[:password_confirmation].join(', ') : "" %><br>
+
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %><br>
   <br>
 
   <%= f.submit "Create Account", class: "button" %>
