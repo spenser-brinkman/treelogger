@@ -37,7 +37,7 @@ class SurveysController < ApplicationController
   end
 
   def delete_survey_confirmation
-    @survey = Survey.find_by(id: params[:survey][:id])
+    @survey = Survey.find_by(id: params[:survey])
   end
 
   def destroy
