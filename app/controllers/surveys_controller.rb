@@ -46,7 +46,7 @@ class SurveysController < ApplicationController
     redirect_to property_path(@property)
   end
 
-  def choose_property_to_survey
+  def new_survey                                   # Controller Action to initiate process of starting survey prior to choosing property
     @properties = current_user.properties.all
   end
   
