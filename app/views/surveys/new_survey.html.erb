@@ -1,0 +1,7 @@
+<center>
+<h2>Choose a property to survey</h2>
+<% @properties.each do |prop| %>
+  <%= link_to prop.title, new_property_survey_path(prop), class: "button" %>
+  <br>
+<% end %>
+</center>
