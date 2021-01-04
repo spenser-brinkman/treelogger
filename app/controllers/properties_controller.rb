@@ -42,6 +42,7 @@ class PropertiesController < ApplicationController
   
   def delete_property_confirmation
     @property = Property.find_by(id: params[:property])
+    authorize(@property)
   end
 
   def destroy
@@ -63,7 +64,7 @@ class PropertiesController < ApplicationController
 
   def delete_associations
     get_property
-    byebug
+    @property.trees.each { |t| t.inspections.destroy_all }
     @property.surveys.destroy_all
     @property.trees.destroy_all
   end
