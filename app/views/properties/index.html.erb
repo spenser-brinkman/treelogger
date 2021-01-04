@@ -1,15 +1,15 @@
 <center>
 <h2>Your Properties</h2>
 
-<%= link_to "New Property", new_property_path, class: "button small" %><br><br>
-
-<h2></h2>
-
 <% if @properties.present? %>
   <% @properties.each do |prop| %>
     <%= link_to prop.title, prop, class: "button" %>
   <% end %>
 <% else %>
   There are no properties on this account.
-<% end %>
+<% end %><br><br>
+
+<h2></h2>
+Want to add a property?<br>
+<%= link_to "New Property", new_property_path, class: "button small" %>
 </center>

@@ -1,9 +1,5 @@
 <center>
-<h2>Surveys for <%= @property.title %></h2>
-
-<%= link_to "New Survey", new_property_survey_path(@property), class: "button small" %><br><br>
-
-<h2></h2>
+<h2><%= @property.title %> &mdash; Surveys</h2>
 
 <% if @surveys.present? %>
   <% @surveys.each do |survey| %>
@@ -11,5 +7,10 @@
   <% end %>
 <% else %>
   There are no surveys for this property.
-<% end %>
+<% end %><br><br>
+
+<h2></h2>
+
+Want to start a survey?<br>
+<%= link_to "New Survey", new_property_survey_path(@property), class: "button small" %>
 </center>

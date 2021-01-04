@@ -4,7 +4,6 @@
 <% if @properties.present? %>
   <% @properties.each do |prop| %>
     <%= link_to prop.title, new_property_survey_path(prop), class: "button" %>
-    <br>
   <% end %>
 
 <% else %>

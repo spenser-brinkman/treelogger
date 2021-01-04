@@ -1,22 +1,23 @@
 <center>
-  <h2>Edit <%= @property.title %></h2>
+<h2>Edit <%= @property.title %></h2>
 
-  <div style="color:#FF0000">
-  <% if flash.alert.present? %>
-    <% flash.alert.each do |err| %>
-      <%= err %><br>
-    <% end %>
-    <br>
-  <% end %>
-  </div>
-
-  <%= form_with model: @property do |f| %>
-    <%= f.label :title, "Name: " %>
-    <%= f.text_field :title %>
-    <br><br>
-    <%= f.submit "Update Property", class: "button" %>
+<div style="color:#FF0000">
+<% if flash.alert.present? %>
+  <% flash.alert.each do |err| %>
+    <%= err %><br>
   <% end %>
   <br>
-  <%= link_to "Delete this property", delete_property_path(property: @property), class: "button small discrete" %>
+<% end %>
+</div>
 
+<%= form_with model: @property do |f| %>
+  <%= f.label :title, "Name: " %>
+  <%= f.text_field :title %>
+  <br><br>
+  <%= f.submit "Update Property", class: "button" %>
+<% end %>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<%= link_to "Delete this property", delete_property_path(property: @property), class: "button small" %>
 </center>
