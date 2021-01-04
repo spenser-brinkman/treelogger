@@ -24,3 +24,10 @@ link
 - Include a weather attribute for surveys
 - Allow users to upload photograps of each tree
 - Latin names of species
+- Forgot your password? Click to reset (unsecure without email verification)
+- Require old password when creating new password
+
+
+### Bugs
+- When new tree is created there should be a button to create a new survey
+- Tree inspection show page should have an edit button -> edit form
