@@ -1,9 +1,7 @@
-<h2><center>Are you sure you want to delete this survey?</h2>
+<center>
+<h2>Are you sure you want to delete this survey?</h2>
 
-<div>
-  <center><%= button_to "Yes, delete this survey", @survey, method: "delete", class: "button" %>
-</div>
+<%= button_to "Yes, delete this survey", @survey, method: "delete", class: "button" %>
 
-<div>
-  <center><%= button_to "No, go back", edit_survey_path(@survey), method: "get", class: "button" %>
-</div>
+<%= button_to "No, go back", edit_survey_path(@survey), method: "get", class: "button" %>
+</center>
