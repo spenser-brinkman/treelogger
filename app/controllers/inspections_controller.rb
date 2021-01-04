@@ -8,13 +8,17 @@ class InspectionsController < ApplicationController
 
   def create
     @survey = Survey.find_by(id: params[:survey_id])
+    @tree = Tree.find_by(id: params[:tree_id])
     authorize(@survey)
     @inspection = @survey.inspections.build(inspection_params)
-    @inspection.tree = Tree.find_by(id: params[:tree_id])
+    @inspection.tree = @tree
     @inspection.user = current_user
     authorize(@inspection)
     if @inspection.save
       redirect_to @survey
+    else
+      @errors = @inspection.errors
+      render 'inspections/new'
     end
   end
 
