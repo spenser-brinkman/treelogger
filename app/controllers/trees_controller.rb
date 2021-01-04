@@ -55,9 +55,9 @@ class TreesController < ApplicationController
     authorize(@tree)
   end
 
-                                      # ???
-  def choose_property_to_tree
-    @properties = current_user.properties.all
+  def select_survey
+    get_tree
+    @surveys = @tree.property.surveys
   end
   
   def last_survey(tree)
