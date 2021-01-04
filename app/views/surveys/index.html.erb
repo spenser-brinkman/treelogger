@@ -1,7 +1,15 @@
 <center>
 <h2>Surveys for <%= @property.title %></h2>
 
-<% @surveys.each do |survey| %>
-  <%= link_to humanize_date(survey.date), survey, class: "button" %>
+<%= link_to "New Survey", new_property_survey_path(@property), class: "button small" %><br><br>
+
+<h2></h2>
+
+<% if @surveys.present? %>
+  <% @surveys.each do |survey| %>
+    <%= link_to humanize_date(survey.date), survey, class: "button" %>
+  <% end %>
+<% else %>
+  There are no surveys for this property.
 <% end %>
 </center>
