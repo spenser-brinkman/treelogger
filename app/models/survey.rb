@@ -1,6 +1,6 @@
 class Survey < ApplicationRecord
 
-  validates_presence_of :date
+  validates :date, presence: true, uniqueness: {scope: :property_id}
   
   has_many :inspections
   has_many :trees, through: :inspections
