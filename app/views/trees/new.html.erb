@@ -7,7 +7,7 @@ Give an identifying name to your tree<br>
   <% if @errors[:name].empty? %>
     <%= f.label :name, "&nbsp;".html_safe %><br>
   <% else %>
-    <%= f.label :name, "You must assign a name", style: "color: red" %><br>
+    <%= f.label :name, "Assign a name", style: "color: red" %><br>
   <% end %>
   <%= f.text_field :name, placeholder: "Tree Name", style: "text-align: center;", class: "non-red-error" %>
 
@@ -15,11 +15,11 @@ Give an identifying name to your tree<br>
 
   Assign a species by selecting from the dropdown box<br>
   or by entering a new species into the text box.<br>
-  If unidentified, select "Unknown Species" from the dropdown.<br>
+  If unidentified, select "Unknown" from the dropdown.<br>
   <% if @errors[:species].empty? %>
     <%= f.label :species, "&nbsp;".html_safe %><br>
   <% else %>
-    <%= f.label :species, "You must select a species", style: "color: red" %><br>
+    <%= f.label :species, "Select a species", style: "color: red" %><br>
   <% end %>
   <%= f.collection_select :species, Species.all, :id, :name, include_blank: "Select a species" %>
   or
@@ -30,6 +30,6 @@ Give an identifying name to your tree<br>
 
   <br><br>
 
-  <%= f.submit "Create Tree", class: "button" %>
+  <%= f.submit "Create Tree", class: "button small" %>
 <% end %>
 </center>
