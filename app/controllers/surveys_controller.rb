@@ -15,7 +15,11 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Property.find_by(id: params[:property_id]).surveys.build(survey_params)
+    @property = Property.find_by(id: params[:property_id])
+    authorize(@property)
+    @survey = @property.surveys.build(survey_params)
+    @survey.user = current_user
+    authorize(@survey)
     if @survey.save
       redirect_to @survey
     else
@@ -59,6 +63,7 @@ class SurveysController < ApplicationController
 
   def get_survey
     @survey = current_user.surveys.find_by(id: params[:id])
+    authorize(@survey)
   end
 
 end
