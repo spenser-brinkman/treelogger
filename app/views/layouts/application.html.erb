@@ -25,11 +25,9 @@
         </span>
         <span style="float:right;">
         <% if logged_in? %>
-          <form action="/logout" method="get">
-            <button class="button small" formaction="/properties">Properties</button>
-            <button class="button small" formaction="<%= user_path(current_user) %>">Home Page</button>
-            <button class="button small">Log Out</button>
-          </form>
+          <span><%= link_to "Properties", properties_path, class: "button small" %></span>
+          <span><%= link_to "Home Page", user_path(current_user), class: "button small" %></span>
+          <span><%= link_to "Log Out", logout_path, class: "button small" %></span>
         <% end %>
         </span>
       </header>
