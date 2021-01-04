@@ -1,6 +1,6 @@
 Species.destroy_all
 
-Species.create({name: "Unknown Species"})
+Species.create({name: "Unknown"})
 Species.create({name: "Alder"})
 Species.create({name: "Almond"})
 Species.create({name: "Apple"})
