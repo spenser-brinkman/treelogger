@@ -3,11 +3,17 @@
 
 <%= link_to "Back to #{@survey.property.title}", property_path(@survey.property), class: "button small" %>
 <%= link_to "Back to #{@survey.property.title} Surveys", property_surveys_path(@survey.property), class: "button small" %>
-<%= link_to "Add New Tree to #{@survey.property.title}", new_property_tree_path(@survey.property, survey: @survey), class: "button small" %>
-<%= link_to "Edit Survey", edit_survey_path(@survey), class: "button small" %>
+<%= link_to "Edit Survey", edit_survey_path(@survey), class: "button small" %><br>
+<%= link_to "Add New Tree to #{@survey.property.title}", new_property_tree_path(@survey.property, survey: @survey), class: "button small" %><br><br>
+
+<h2></h2>
+
+<% if @survey.property.trees.empty? %>
+  There aren't any trees to survey on this property yet.
+<% end %>
 
 <% if @survey.property.trees.any? {|tree| !tree.surveys.include?(@survey)} %>
-  <br><br>These trees have not been logged on this survey yet:<br>
+  These trees have not been logged on this survey yet:<br>
   <% @survey.property.trees.each do |tree| %>
     <% if !tree.surveys.include?(@survey) %>
       <%= link_to tree.name, new_tree_inspection_path(tree, survey: @survey), class: "button" %>
@@ -17,12 +23,12 @@
 <% end %>
 
 <%= "<br>".html_safe if @survey.property.trees.any? {|tree| !tree.surveys.include?(@survey)} && @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
-<%= "<br><br>".html_safe if @survey.property.trees.none? {|tree| !tree.surveys.include?(@survey)} && @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
 
 <% if @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
   Completed inspections:<br>
   <% @survey.inspections.each do |inspection| %>
     <%= link_to inspection.tree.name, tree_path(inspection.tree, survey: @survey), class: "button" %>
   <% end %>
+  <br>
 <% end %>
 </center>
