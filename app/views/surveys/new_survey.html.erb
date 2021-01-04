@@ -1,7 +1,15 @@
 <center>
 <h2>Choose a property to survey</h2>
-<% @properties.each do |prop| %>
-  <%= link_to prop.title, new_property_survey_path(prop), class: "button" %>
-  <br>
+
+<% if @properties.present? %>
+  <% @properties.each do |prop| %>
+    <%= link_to prop.title, new_property_survey_path(prop), class: "button" %>
+    <br>
+  <% end %>
+
+<% else %>
+  <%= link_to "New Property", new_property_path, class: "button small" %><br><br>
+  <h2></h2>
+  There are no properties on this account.
 <% end %>
 </center>
