@@ -1,4 +1,3 @@
-<center>
 <h2>Select Survey Date for <%= @tree.name %></h2>
 
 <% if @surveys.any? { |survey| !@tree.surveys.include?(survey) } %>
@@ -14,4 +13,3 @@
 
 <h2></h2>
 <%= link_to "New Survey", new_property_survey_path(@tree.property), class: "button small" %>
-</center>
