@@ -23,3 +23,4 @@ link
 - Homepage shows most recent survey date
 - Include a weather attribute for surveys
 - Allow users to upload photograps of each tree
+- Latin names of species
