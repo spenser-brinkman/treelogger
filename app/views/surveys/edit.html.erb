@@ -1,6 +1,15 @@
 <center>
 <h2>Edit survey from <%= humanize_date(@survey.date) %></h2>
 
+<div style="color:#FF0000">
+<% if flash.alert.present? %>
+  <% flash.alert.each do |err| %>
+    <%= err %><br>
+  <% end %>
+  <br>
+<% end %>
+</div>
+
 <%= form_with model: @survey do |f| %>
   <%= f.label :date, "Survey Date:" %>
   <%= f.date_field :date, min: "2020-01-01", max: today, value: @survey.date %>
@@ -8,5 +17,7 @@
   <%= f.submit "Update Survey Date", class: "button" %>
 <% end %>
 
-<%= link_to "Delete this survey", delete_survey_path(survey: @survey), class: "button small discrete" %>
+<br><br><br><br><br><br><br><br><br><br>
+
+<%= link_to "Delete this survey", delete_survey_path(survey: @survey), class: "button small" %>
 </center>

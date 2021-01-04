@@ -1,16 +1,12 @@
 <center>
 <h2>Log In</h2>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prevented you from logging in:</h2>
-    <ul>
-      <% @user.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
+<div style="color:#FF0000">
+<% if @error.present? %>
+  <%= @error %>
+  <br><br>
 <% end %>
+</div>
 
 <%= form_with model: @user, url: login_path, method: "post" do |f| %>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :email, "Email:" %>
