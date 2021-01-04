@@ -2,17 +2,32 @@
 <h2><%= @tree.name %></h2>
 
 <% if !@tree.inspections.empty? %>
-  Species: <%= @tree.species.name %><br>
-  Height: <%= params[:survey] ? current_survey(@tree).height : last_survey(@tree).height %> feet<br>
-  DBH: <%= params[:survey] ? current_survey(@tree).dbh : last_survey(@tree).dbh %> inches<br>
-  Foliage: <%= params[:survey] ? current_survey(@tree).foliage : last_survey(@tree).foliage %><br>
-  Comments: <%= params[:survey] ? current_survey(@tree).comments : last_survey(@tree).comments %><br>
+  Species:<br>
+  <strong><%= @tree.species.name %></strong><br><br>
+  Height:<br>
+  <strong><%= params[:survey] ? current_survey(@tree).height : last_survey(@tree).height %> feet</strong><br><br>
+  DBH:<br>
+  <strong><%= params[:survey] ? current_survey(@tree).dbh : last_survey(@tree).dbh %> inches</strong><br><br>
+  Foliage:<br>
+  <strong><%= params[:survey] ? current_survey(@tree).foliage : last_survey(@tree).foliage %></strong><br><br>
+  Comments:<br>
+  <strong>
+  <% if params[:survey] %>
+    <%= current_survey(@tree).comments %><br>
+  <% else %>
+    <% @tree.inspections.each do |i| %>
+      <% unless i.comments == "" %>
+        &bull; <%= "#{humanize_date(i.survey.date)}: " + "#{i.comments}" %><br>
+      <% end%>
+    <% end %>
+  <% end %><br>
+  </strong>
 <% else %>
   This tree has not yet been inspected! You'll have to log this tree in a survey before anything more will be shown on this page.<br><br>
 <% end %>
 
 <h2></h2>
 
-<%= link_to "Back to Surveys", property_surveys_path(@tree.property), class: "button" %>
-<%= link_to "Back to #{@tree.property.title}", property_path(@tree.property), class: "button" %>
+<%= link_to "Back to Surveys", property_surveys_path(@tree.property), class: "button small" %>
+<%= link_to "Back to #{@tree.property.title}", property_path(@tree.property), class: "button small" %>
 </center>
