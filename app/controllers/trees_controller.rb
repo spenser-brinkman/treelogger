@@ -24,6 +24,7 @@ class TreesController < ApplicationController
     @tree.user = current_user
     select_or_create_species
     @tree.species = @species
+    authorize(@tree)
     if @survey
       if @tree.save
         redirect_to @survey
@@ -45,11 +46,14 @@ class TreesController < ApplicationController
   end
 
   def update
+    authorize(@tree)
   end
 
   def destroy
+    authorize(@tree)
   end
 
+                                      # ???
   def choose_property_to_tree
     @properties = current_user.properties.all
   end
@@ -75,8 +79,6 @@ class TreesController < ApplicationController
   def select_or_create_species
     if params[:tree][:species] == "" && params[:tree][:species_attributes][:name] != ""         # If user wants to enter new species
       @species = Species.create(name: params[:tree][:species_attributes][:name])
-    elsif params[:tree][:species] == "" && params[:tree][:species_attributes][:name] == ""      # If user does not select a species
-      @species = Species.find_by_name("Unknown")
     else                                                                                           # If user simply selects from dropdown
       @species = Species.find_by(id: params[:tree][:species])
     end
