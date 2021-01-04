@@ -4,6 +4,8 @@ class TreesController < ApplicationController
   helper_method :current_survey
 
   def index
+    @property = Property.find_by(id: params[:property_id])
+    @trees = @property.trees     
   end
 
   def show
