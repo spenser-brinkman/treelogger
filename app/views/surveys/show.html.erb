@@ -1,23 +1,28 @@
-Survey taken on <%= humanize_date(@survey.date) %>
-<br>
+<center>
+<h2>Survey taken on <%= humanize_date(@survey.date) %></h2>
 
-<%= link_to "Add a new tree to this property's inventory", new_property_tree_path(@survey.property, survey: @survey) %>
-<br><br>
+<%= link_to "Back to #{@survey.property.title}", property_path(@survey.property), class: "button small" %>
+<%= link_to "Back to #{@survey.property.title} Surveys", property_surveys_path(@survey.property), class: "button small" %>
+<%= link_to "Add New Tree to #{@survey.property.title}", new_property_tree_path(@survey.property, survey: @survey), class: "button small" %>
+<%= link_to "Edit Survey", edit_survey_path(@survey), class: "button small" %>
 
 <% if @survey.property.trees.any? {|tree| !tree.surveys.include?(@survey)} %>
-  These trees have not been logged on this survey yet:<br>
+  <br><br>These trees have not been logged on this survey yet:<br>
   <% @survey.property.trees.each do |tree| %>
     <% if !tree.surveys.include?(@survey) %>
-      <%= link_to tree.name, new_tree_inspection_path(tree, survey: @survey) %> - <%= tree.species.name %><br>
+      <%= link_to tree.name, new_tree_inspection_path(tree, survey: @survey), class: "button" %>
     <% end %>
   <% end %>
+  <br>
 <% end %>
-<br>
+
+<%= "<br>".html_safe if @survey.property.trees.any? {|tree| !tree.surveys.include?(@survey)} && @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
+<%= "<br><br>".html_safe if @survey.property.trees.none? {|tree| !tree.surveys.include?(@survey)} && @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
+
 <% if @survey.property.trees.any? {|tree| tree.surveys.include?(@survey)} %>
   Completed inspections:<br>
   <% @survey.inspections.each do |inspection| %>
-    <%= link_to inspection.tree.name, tree_path(inspection.tree, survey: @survey) %> - <%= inspection.tree.species.name %><br>
+    <%= link_to inspection.tree.name, tree_path(inspection.tree, survey: @survey), class: "button" %>
   <% end %>
 <% end %>
-<br><br>
-<%= link_to "Edit this survey", edit_survey_path(@survey) %>
+</center>
