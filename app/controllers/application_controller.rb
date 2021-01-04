@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize(resource)
-    redirect back if resource.user != current_user
+    redirect_back(fallback_location: root_path) if resource.user != current_user
   end
 
   def today
