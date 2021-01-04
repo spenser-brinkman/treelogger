@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
   
+  before_action :delete_associations, only: [:destroy]
+
   def show
     get_property
   end
@@ -15,6 +17,7 @@ class PropertiesController < ApplicationController
   
   def create
     @property = current_user.properties.build(property_params)
+    authorize(@property)
     if @property.save
       redirect_to @property
     else
@@ -51,9 +54,17 @@ class PropertiesController < ApplicationController
   
   def get_property
     @property = Property.find_by(id: params[:id])
+    authorize(@property)
   end
     
   def property_params
     params.require(:property).permit(:title)
+  end
+
+  def delete_associations
+    get_property
+    byebug
+    @property.surveys.destroy_all
+    @property.trees.destroy_all
   end
 end
