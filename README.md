@@ -29,5 +29,4 @@ link
 
 
 ### Bugs
-- When new tree is created there should be a button to create a new survey
 - Tree inspection show page should have an edit button -> edit form
