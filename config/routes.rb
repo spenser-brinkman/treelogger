@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get 'delete_survey', to: 'surveys#delete_survey_confirmation', as: 'delete_survey'
   get 'delete_user', to: 'users#delete_user_confirmation', as: 'delete_user'
   get 'new_survey', to: 'surveys#new_survey', as: 'start_new_survey'
+  get 'select_survey/:id', to: 'trees#select_survey', as: 'select_survey_for_tree'
 
 end
