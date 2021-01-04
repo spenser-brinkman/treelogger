@@ -49,7 +49,8 @@ class SurveysController < ApplicationController
   def destroy
     get_survey
     @property = @survey.property
-    @survey.delete
+    @survey.inspections.each { |i| i.destroy }
+    @survey.destroy
     redirect_to property_path(@property)
   end
 
