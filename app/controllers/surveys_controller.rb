@@ -23,7 +23,8 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to @survey
     else
-      render new_property_survey_path(@survey.property)
+      @errors = @survey.errors
+      render 'surveys/new'
     end
   end
 
@@ -36,7 +37,8 @@ class SurveysController < ApplicationController
     if @survey.update(survey_params)
       redirect_to @survey
     else
-      render edit_survey(@survey)
+      flash.alert = @survey.errors.full_messages
+      redirect_to edit_survey_path(@survey)
     end
   end
 
