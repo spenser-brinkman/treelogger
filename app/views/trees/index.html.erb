@@ -1,0 +1,15 @@
+<center>
+<h2><%= @property.title %> &mdash; Trees</h2>
+
+<% if @trees.present? %>
+  <% @trees.each do |tree| %>
+    <%= link_to tree.name, tree, class: "button" %>
+  <% end %>
+<% else %>
+  There are no trees for this property.
+<% end %><br><br>
+
+<h2></h2>
+Want to add a tree?<br>
+<%= link_to "New Tree", new_property_tree_path(@property), class: "button small" %>
+</center>
