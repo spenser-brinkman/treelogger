@@ -15,8 +15,8 @@ class User < ApplicationRecord
   has_many :inspections, through: :surveys
   
   def password_complexity
-    return if password.blank? || password =~ /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/
-    errors.add :password, "should be 8-20 characters with at least one letter and one number. Special characters are invalid. Your security is our lowest priority."
+    return if password.blank? || password =~ /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$/
+    errors.add :password, "should be 8-30 characters with at least one letter and one number. Special characters are invalid. Your security is our lowest priority."
   end
 
 end
