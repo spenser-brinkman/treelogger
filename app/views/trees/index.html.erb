@@ -1,4 +1,4 @@
-<h2><%= @property.title %> &mdash; Trees</h2>
+<h2><%= @property.title %> &mdash; <%= params[:action] == "single_species_index" ? "#{@trees.first.species.name}".pluralize : "Trees" %></h2>
 
 <% if @trees.present? %>
   <% @trees.each do |tree| %>
@@ -9,5 +9,11 @@
 <% end %><br><br>
 
 <h2></h2>
-Want to add a tree?<br>
+
+<% if @property.trees.present? %>
+  <%= link_to "View by Species", species_selection_path(property_id: @property), class: "button small" %>
+<% end %>
 <%= link_to "New Tree", new_property_tree_path(@property), class: "button small" %>
+<br>
+<%= link_to "#{@property.title}", property_path(@property), class: "button small" %>
+<%= link_to "Surveys", property_surveys_path(@property), class: "button small" %>

@@ -1,0 +1,4 @@
+<h2>Select a Species</h2>
+<% @species.each do |s| %>
+  <%= link_to s.name, properties_trees_of_species_path(@property, s), class: "button" %>
+<% end %>

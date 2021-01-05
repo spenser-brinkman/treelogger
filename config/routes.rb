@@ -27,5 +27,7 @@ Rails.application.routes.draw do
   get 'delete_user', to: 'users#delete_user_confirmation', as: 'delete_user'
   get 'new_survey', to: 'surveys#new_survey', as: 'start_new_survey'
   get 'select_survey/:id', to: 'trees#select_survey', as: 'select_survey_for_tree'
+  get 'species_selection', to: 'trees#species_selection', as: 'species_selection'
+  get 'properties/:property_id/trees/species/:species_id', to: 'trees#single_species_index', as: 'properties_trees_of_species'
 
 end
