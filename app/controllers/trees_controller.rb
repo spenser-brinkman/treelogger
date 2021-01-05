@@ -68,7 +68,7 @@ class TreesController < ApplicationController
 
   def single_species_index
     get_property
-    @trees = @property.trees.where(species_id: params[:species_id])
+    @trees = @property.trees.of_species(params[:species_id])
     render 'trees/index'
   end
 
