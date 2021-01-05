@@ -7,6 +7,7 @@ class SurveysController < ApplicationController
 
   def show
     get_survey
+    @property = @survey.property
   end
 
   def new
