@@ -1,4 +1,4 @@
-<h2>Inspection form for <%= @tree.name %></h2>
+<h2>Inspection for <%= @tree.name %></h2>
 <%= form_with model: @inspection, url: survey_inspections_path(@survey, tree_id: @tree) do |f| %>
   <%= f.label :height, "Height (feet)" %><br>
   <%= f.number_field :height %>
