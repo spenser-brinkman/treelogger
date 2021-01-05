@@ -4,8 +4,8 @@ class TreesController < ApplicationController
   helper_method :current_survey
 
   def index
-    @property = Property.find_by(id: params[:property_id])
-    @trees = @property.trees     
+    get_property
+    @trees = @property.trees
   end
 
   def show
@@ -15,13 +15,13 @@ class TreesController < ApplicationController
   def new
     @tree = Tree.new
     @tree.species = Species.new
-    @property = Property.find_by(id: params[:property_id])
+    get_property
     @errors = @tree.errors
   end
 
   def create
     @survey = Survey.find_by(id: params[:survey_id])
-    @property = Property.find_by(id: params[:property_id])
+    get_property
     @tree = @property.trees.build(tree_params)
     @tree.user = current_user
     select_or_create_species
@@ -59,7 +59,19 @@ class TreesController < ApplicationController
     get_tree
     @surveys = @tree.property.surveys
   end
-  
+
+  def species_selection
+    get_property
+    @trees = Tree.includes(:species).where(property_id: @property.id)
+    @species = @trees.map(&:species).uniq
+  end
+
+  def single_species_index
+    get_property
+    @trees = @property.trees.where(species_id: params[:species_id])
+    render 'trees/index'
+  end
+
   def last_survey(tree)
     tree.surveys.find_by(date: tree.surveys.maximum("date")).inspections.find_by(tree_id: tree.id)
   end
@@ -78,6 +90,10 @@ class TreesController < ApplicationController
     @tree = Tree.find_by(id: params[:id])
   end
 
+  def get_property
+    @property = Property.find_by(id: params[:property_id])
+  end
+    
   def select_or_create_species
     if params[:tree][:species] == "" && params[:tree][:species_attributes][:name] != ""         # If user wants to enter new species
       @species = Species.create(name: params[:tree][:species_attributes][:name])
