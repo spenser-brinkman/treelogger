@@ -5,24 +5,30 @@
   <strong><%= @tree.species.name %></strong><br><br>
   
   Height:<br>
-  <strong><%= params[:survey] ? current_survey(@tree).height : last_survey(@tree).height %> feet</strong><br><br>
+  <strong><%= params[:survey].present? ? current_survey(@tree).height : last_survey(@tree).height %> feet</strong><br><br>
   
   DBH:<br>
-  <strong><%= params[:survey] ? current_survey(@tree).dbh : last_survey(@tree).dbh %> inches</strong><br><br>
+  <strong><%= params[:survey].present? ? current_survey(@tree).dbh : last_survey(@tree).dbh %> inches</strong><br><br>
   
   Foliage:<br>
-  <strong><%= params[:survey] ? current_survey(@tree).foliage : last_survey(@tree).foliage %></strong><br><br>
+  <strong><%= params[:survey].present? ? current_survey(@tree).foliage : last_survey(@tree).foliage %></strong><br><br>
   
-  <% if @tree.inspections.any? { |i| i.comments.present?} || current_survey(@tree).comments.present? %>
+  <% if @tree.inspections.none? { |i| i.comments.present? } %>
+    <%# don't display any comments %>
+  <% else %>
     Comments:<br>
     <strong>
-    <% if params[:survey] %>
+    <% if params[:survey].present? && current_survey(@tree).comments.present? %>
       <%= current_survey(@tree).comments %><br>
-    <% else %>
+    <% else %>    
       <% @tree.inspections.each do |i| %>
-        <% unless i.comments == "" %>
-          &bull; <%= "#{humanize_date(i.survey.date)}: " + "#{i.comments}" %><br>
-        <% end%>
+        <% if i.comments.present? %>
+          <% if !params[:survey].present? %>
+            <%= "&bull; ".html_safe if @tree.inspections.size > 1 %> 
+            <%= "#{humanize_date(i.survey.date)}: " %>
+          <% end %>
+          <%= "#{i.comments}" %><br>
+        <% end %>
       <% end %>
     <% end %><br>
     </strong>
