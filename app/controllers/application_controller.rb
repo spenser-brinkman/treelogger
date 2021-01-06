@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :humanize_date
   helper_method :oxfordize_list
   helper_method :greet
+  helper_method :last_survey
+  helper_method :current_survey
 
   before_action :authentication
 
@@ -49,6 +51,18 @@ class ApplicationController < ActionController::Base
     else
       'Hello, '
     end
+  end
+
+  def last_survey(tree)
+    recent_survey(tree).inspections.find_by(tree_id: tree.id)
+  end
+
+  def current_survey(tree)
+    tree.surveys.find_by(id: params[:survey]).inspections.find_by(tree_id: tree.id)
+  end
+  
+  def recent_survey(resource)
+    resource.surveys.find_by(date: resource.surveys.maximum("date"))
   end
 
 end

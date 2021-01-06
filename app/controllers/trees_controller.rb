@@ -1,8 +1,5 @@
 class TreesController < ApplicationController
 
-  helper_method :last_survey
-  helper_method :current_survey
-
   def index
     get_property
     @trees = @property.trees
@@ -70,14 +67,6 @@ class TreesController < ApplicationController
     get_property
     @trees = @property.trees.of_species(params[:species_id])
     render 'trees/index'
-  end
-
-  def last_survey(tree)
-    tree.surveys.find_by(date: tree.surveys.maximum("date")).inspections.find_by(tree_id: tree.id)
-  end
-  
-  def current_survey(tree)
-    tree.surveys.find_by(id: params[:survey]).inspections.find_by(tree_id: tree.id)
   end
   
   private
