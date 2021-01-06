@@ -18,7 +18,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [eh] The application is pretty DRY
+- [ ] The application is pretty DRY
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
-- [(sadface)] Views use partials if appropriate
+- [ ] Views use partials if appropriate
