@@ -40,7 +40,7 @@
         <span style="float:right;">
         <% if params[:controller] == "properties" && params[:action] == "show" %>
           <% if Property.find_by(id: params[:id]).inspections.present? %>
-            <%= link_to "&#127794;".html_safe, tallest_tree_path(property: @property), style: "text-decoration:none;" %>
+            <%= link_to "&#127794;".html_safe, tallest_tree_path, style: "text-decoration:none;" %>
             <% end %>
         <% end %>
         </span>

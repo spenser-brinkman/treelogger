@@ -52,7 +52,7 @@ class PropertiesController < ApplicationController
   end
 
   def tallest_tree
-    @property = Property.find_by(id: params[:property])
+    @property = Property.find_by(id: params[:id])
     @inspection = recent_survey(@property).inspections.tallest.first
     @tree = @property.inspections.tallest.first.tree
   end
