@@ -18,10 +18,15 @@ Foliage:<br>
   <% @tree.inspections.each do |i| %>
     <% if i.comments.present? %>
       &bull; <%= "#{humanize_date(i.survey.date)}: " + "#{i.comments}" %><br>
-    <% end%>
+    <% end %>
   <% end %><br>
   </strong>
 <% end %>
+
+<p style="font-size:small">
+  (Information is based on the most recent survey of this property.<br>
+  If a taller tree has not yet been logged on the most recent survey, it might not be shown here.)
+</p>
 
 <h2></h2>
 
