@@ -37,6 +37,13 @@
         </center>
       <footer class="branding">
         <small>&copy; 2020 <strong>TreeLogger</strong></small>
+        <span style="float:right;">
+        <% if params[:controller] == "properties" && params[:action] == "show" %>
+          <% if Property.find_by(id: params[:id]).inspections.present? %>
+            <%= link_to "&#127794;".html_safe, tallest_tree_path(property: @property), style: "text-decoration:none;" %>
+            <% end %>
+        <% end %>
+        </span>
       </footer>
     </div>
   </body>

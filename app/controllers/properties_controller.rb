@@ -50,7 +50,14 @@ class PropertiesController < ApplicationController
     @property.delete
     redirect_to properties_path
   end
-  
+
+  def tallest_tree
+    @property = Property.find_by(id: params[:property])
+    @inspection = recent_survey(@property).inspections.tallest.first
+    byebug
+    @tree = @property.inspections.tallest.first.tree
+  end
+
   private
   
   def get_property

@@ -1,0 +1,31 @@
+<h2><%= "#{@tree.name} &mdash; #{@tree.property.title}'s Tallest Tree".html_safe %></h2>
+
+Species:<br>
+<strong><%= @tree.species.name %></strong><br><br>
+
+Height:<br>
+<strong><%= @inspection.height %> feet</strong><br><br>
+
+DBH:<br>
+<strong><%= @inspection.dbh %> inches</strong><br><br>
+
+Foliage:<br>
+<strong><%= @inspection.foliage %></strong><br><br>
+
+<% if @tree.inspections.any? { |i| i.comments.present?} %>
+  Comments:<br>
+  <strong>
+  <% @tree.inspections.each do |i| %>
+    <% if i.comments.present? %>
+      &bull; <%= "#{humanize_date(i.survey.date)}: " + "#{i.comments}" %><br>
+    <% end%>
+  <% end %><br>
+  </strong>
+<% end %>
+
+<h2></h2>
+
+<%= link_to "Inspect This Tree", select_survey_for_tree_path(@tree), class: "button small" %><br>
+<%= link_to "Trees", property_trees_path(@tree.property), class: "button small" %>
+<%= link_to "Surveys", property_surveys_path(@tree.property), class: "button small" %>
+<%= link_to "#{@tree.property.title}", property_path(@tree.property), class: "button small" %>
