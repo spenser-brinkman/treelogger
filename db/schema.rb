@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_025205) do
+ActiveRecord::Schema.define(version: 2021_01_06_232142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_025205) do
 
   create_table "surveys", force: :cascade do |t|
     t.integer "property_id"
-    t.date "date"
     t.integer "user_id"
+    t.date "date"
   end
 
   create_table "trees", force: :cascade do |t|
