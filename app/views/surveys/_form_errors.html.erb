@@ -1,0 +1,5 @@
+<div style="color:#FF0000">
+<% if @errors.present? && @errors[:date].present? %>
+  <%= @errors[:date].join(", ") %><br><br>
+<% end %>
+</div>

@@ -1,19 +1,9 @@
 <h2>Edit survey from <%= humanize_date(@survey.date) %></h2>
 
-<div style="color:#FF0000">
-<% if flash.alert.present? %>
-  <% flash.alert.each do |err| %>
-    <%= err %><br>
-  <% end %>
-  <br>
-<% end %>
-</div>
+<%= render partial: "form_errors" %>
 
 <%= form_with model: @survey do |f| %>
-  <%= f.label :date, "Survey Date:" %>
-  <%= f.date_field :date, min: "2020-01-01", max: today, value: @survey.date %>
-  <br><br>
-  <%= f.submit "Update Survey Date", class: "button" %>
+  <%= render partial: "form", locals: { f: f } %>
 <% end %>
 
 <br><br><br><br><br><br><br><br><br><br>
