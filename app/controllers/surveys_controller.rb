@@ -38,8 +38,8 @@ class SurveysController < ApplicationController
     if @survey.update(survey_params)
       redirect_to @survey
     else
-      flash.alert = @survey.errors.full_messages
-      redirect_to edit_survey_path(@survey)
+      @errors = @survey.errors
+      render 'surveys/edit'
     end
   end
 
