@@ -14,16 +14,15 @@
 
       <header>
         <span>
-          <a id="homeLink" href=<%= root_path %>>
-            <img src="/images/logo.png" alt="TreeLogger Logo" width="auto" height="35">
-            <strong>TreeLogger</strong>
+          <a class="logoLink" href=<%= root_path %>>
+            <img src="/images/logo.png" alt="TreeLogger Logo" height="35" width="auto">TreeLogger
           </a>
         </span>
 
         <% if logged_in? %>
           <span style="float:right;">
             <%= link_to "Properties", properties_path, class: "button small" %>
-            <%= link_to "Home Page", user_path(current_user), class: "button small" %>
+            <%= link_to "Home Page", root_path, class: "button small" %>
             <%= link_to "Log Out", logout_path, class: "button small" %>
           </span>
         <% end %>
