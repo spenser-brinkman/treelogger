@@ -133,9 +133,10 @@
     color: black
   }
 
-  a.homeLink {
+  a#homeLink {
     color: inherit;
-    text-decoration: inherit;
+    text-decoration: none;
+    font-size: 300%;
   }
 
   .field_with_errors {
