@@ -23,28 +23,37 @@
 </div>
 
 <%= form_with model: @user do |f| %>
-  <%= f.label :name, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name:".html_safe %>
-  <%= f.text_field :name %><br>
-  <br>
+  <table>
+    <tr>
+      <td style="text-align: right;"><%= f.label :name %>&nbsp;</td>
+      <td><%= f.text_field :name, required: true %></td>
+    </tr>
+    <tr><td><br></td></tr>
 
-  <%= f.label :email, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:".html_safe %>
-  <%= f.text_field :email %><br>
-  <br>
+    <tr>
+      <td style="text-align: right;"><%= f.label :email %>&nbsp;</td>
+      <td><%= f.text_field :email, required: true %></td>
+    </tr>
+    <tr><td><br></td></tr>
+    
+    <tr>
+      <td style="text-align: right;"><%= f.label :password %>&nbsp;</td>
+      <td><%= f.password_field :password, required: true %></td>
+    </tr>
 
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %><br>
-  
-
-  <%= f.label :password_confirmation, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".html_safe %>
-  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %><br>
+    <tr>
+      <td style="text-align: right;"><%= f.label :password_confirmation, "&nbsp;".html_safe %></td>
+      <td><%= f.password_field :password_confirmation, placeholder: "Confirm Password", required: true %></td>
+    </tr>
+      
+  </table>
   <div style="font-size: small">
     Password should be 8-30 characters with at least one letter and one number.<br>
     Special characters are invalid. Your security is our lowest priority.
   </div>
   <br>
-
   <%= f.submit "Create Account", class: "button small" %>
 <% end %>
-<br><br><br>
+<br><br><br><br><br>
 Already have an account?<br><br>
 <%= link_to "Log In", login_path, class: "button small" %>

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validate :password_complexity
   validates_confirmation_of :password
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: "is invalid." },
               uniqueness: { case_sensitive: false },
               length: { minimum: 4, maximum: 254 }
   
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   
   def password_complexity
     return if password.blank? || password =~ /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$/
-    errors.add :password, "should be 8-30 characters with at least one letter and one number. Special characters are invalid. Your security is our lowest priority."
+    errors.add :password, "does not meet requirements."
   end
 
 end

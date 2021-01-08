@@ -8,14 +8,25 @@
 </div>
 
 <%= form_with model: @user, url: login_path, method: "post" do |f| %>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :email, "Email:" %>
-  <%= f.text_field :email %><br><br>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %><br><br>
-  <%= f.button "Log In", class: "button small" %>
+  <table>
+    <tr>
+      <td style="text-align: right;"><%= f.label :email %>&nbsp;</td>
+      <td><%= f.text_field :email, required: true %></td>
+    </tr>
+    <tr><td><br></td></tr>
+
+    <tr>
+      <td style="text-align: right;"><%= f.label :password %>&nbsp;</td>
+      <td><%= f.password_field :password, required: true %></td>
+    </tr>
+    <tr><td><br></td></tr>
+
+  </table>
+
+    <%= f.button "Log In", class: "button small" %>
 <% end %>
 
-<br><br><br>
+<br><br><br><br><br>
 Don't have an account?
 <br><br>
 <%= link_to "Create an Account", new_user_path, class: "button small" %>
