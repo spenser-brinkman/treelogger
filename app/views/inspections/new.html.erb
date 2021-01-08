@@ -4,8 +4,7 @@
   <%= f.number_field :height %>
   <br><br>
 
-  <%= f.label :dbh, "DBH (inches)" %><br>
-  <%= link_to "What is DBH?", "https://en.wikipedia.org/wiki/Diameter_at_breast_height", target: "_blank" %><br>
+  <%= f.label :dbh, "#{link_to "DBH", "https://en.wikipedia.org/wiki/Diameter_at_breast_height", target: "_blank"}".html_safe + " (inches)" %><br>
   <%= f.number_field :dbh %>
   <br><br>
 
@@ -14,7 +13,7 @@
   <br><br>
 
   <%= f.label :comments %><br>
-  <%= f.text_area :comments %>
+  <%= f.text_area :comments, size: "40x5" %>
   <br><br>
 
   <%= f.submit "Log tree", class: "button" %>
