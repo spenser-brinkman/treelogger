@@ -35,12 +35,12 @@
   <% end %>
 
 <% else %>
-  This tree has not yet been inspected! You'll have to log this tree in a survey before anything more will be shown on this page.<br><br>
+  This tree has not yet been logged! You'll have to log this tree in a survey before anything more will be shown on this page.<br><br>
 <% end %>
 
 <h2></h2>
 
-<%= link_to "Inspect This Tree", select_survey_for_tree_path(@tree), class: "button small" %><br>
+<%= link_to "Log This Tree", select_survey_for_tree_path(@tree), class: "button small" %><br>
 <%= link_to "Trees", property_trees_path(@tree.property), class: "button small" %>
 <%= link_to "Surveys", property_surveys_path(@tree.property), class: "button small" %>
 <%= link_to "#{@tree.property.title}", property_path(@tree.property), class: "button small" %>
