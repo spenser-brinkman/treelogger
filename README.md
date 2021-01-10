@@ -8,25 +8,20 @@ This application allows users to keep an inventory of trees growing on a propert
 4. In your web browser, navigate to TreeLogger's homepage at http://localhost:3000/
 
 ### Flatiron Assessment Video & Blog
-link
-link
+https://vimeo.com/498968358
+https://dev.to/spenser6131/basic-rails-website-header-32h5
 
 ### Stretch Goals
-- User can manage multiple properties
-- Password complexity & length reqs
+- Improve password complexity & length reqs without breaking OAuth
 - User provides zip code which will help app generate list of endemic species on their homepage
 - Homepage includes general tree-care links (ANSI standards, terminology, identification)
 - Homepage provides resource to find local arborists
 - Include age of tree (if known) & checkbox for new survey to mark a tree as "newly planted" to assign it a birthdate
 - Homepage shows how many trees are saved
-- Incorporate a Survey model, in which many trees can be added & updated at once. The data from a survey is added to a tree's history of surveys which may be viewed and altered. A tree would then contain a record of past data with corresponding visualiztions, etc
 - Homepage shows most recent survey date
 - Include a weather attribute for surveys
 - Allow users to upload photograps of each tree
 - Latin names of species
 - Forgot your password? Click to reset (unsecure without email verification)
 - Require old password when creating new password
-
-
-### Bugs
 - Tree inspection show page should have an edit button -> edit form
