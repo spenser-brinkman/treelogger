@@ -2,8 +2,9 @@
 This application allows users to keep an inventory of trees growing on a property.  The user may choose to record a survey of multiple trees, or to add/edit individual trees, separate from a survey.  Future surveys may be conducted on trees already inventoried by a user.  Users may record various attributes such as a tree's species, height, diameter, foliar density, and any additional comments relating to general health, watering/fertilization schedules, animal nesting, etc.  Trees may be given identifying names to help differentiate multiple trees of the same species.
 
 ### Video Demonstration
-<iframe src="https://player.vimeo.com/video/498968358" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-<p><a href="https://vimeo.com/498968358">Ruby On Rails - TreeLogger</a> from <a href="https://vimeo.com/user125816596">Spenser Brinkman</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+https://user-images.githubusercontent.com/70671519/112223965-de680f80-8be7-11eb-93bd-a7ae4cb9bbeb.mp4
+
+
 
 ### Accessing TreeLogger
 For the time being, TreeLogger is not hosted on a live domain, but if you'd like to set it up to use on a personal device, you may follow these steps:
