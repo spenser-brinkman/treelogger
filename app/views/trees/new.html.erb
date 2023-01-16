@@ -1,7 +1,7 @@
 <h2>New Tree</h2>
 
 Give an identifying name to your tree<br>
-(e.g., "Front Yard Maple" or "Valley Oak #46")<br>
+(e.g. "Front Yard Maple", "Valley Oak #46")<br>
 <%= form_with model: @tree, url: property_trees_path(@property, survey: params[:survey]) do |f| %>
   <% if @errors[:name].empty? %>
     <%= f.label :name, "&nbsp;".html_safe %><br>

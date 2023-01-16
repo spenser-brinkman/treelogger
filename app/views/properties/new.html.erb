@@ -1,13 +1,9 @@
 <h2>New Property</h2>
 
-Assign a name to the new property<br>
-(e.g., an address, business name, or neighborhood)<br>
-to differentiate this property from others on your account.<br>
-
 <%= form_with model: @property do |f| %>
 
   <% if @errors[:title].empty? %>
-    <%= f.label :title, "&nbsp;".html_safe %><br>
+    <%= f.label :title, "&nbsp;".html_safe %>
   <% else %>
     <%= f.label :title, "You must assign a name", style: "color: red" %><br>
   <% end %>
