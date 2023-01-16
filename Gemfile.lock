@@ -117,6 +117,7 @@ GEM
     minitest (5.16.3)
     msgpack (1.6.0)
     multi_xml (0.6.0)
+    mysql2 (0.5.4)
     net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
@@ -147,7 +148,6 @@ GEM
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
-    pg (1.4.4)
     public_suffix (5.0.0)
     puma (4.3.12)
       nio4r (~> 2.0)
@@ -250,8 +250,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   dotenv-rails
   listen (~> 3.2)
+  mysql2 (~> 0.5)
   omniauth-google-oauth2
-  pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 7.0.4)
   sass-rails (>= 6)
