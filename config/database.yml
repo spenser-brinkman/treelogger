@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: tree_logger_2_development
+  database: tree_logger_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tree_logger_2_test
+  database: tree_logger_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: tree_logger_2_production
-  username: tree_logger_2
-  password: <%= ENV["TREE_LOGGER_2_DATABASE_PASSWORD"] %>
+  database: tree_logger_production
+  username: tree_logger
+  password: <%= ENV["TREE_LOGGER_DATABASE_PASSWORD"] %>
