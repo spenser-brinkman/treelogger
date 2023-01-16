@@ -16,7 +16,7 @@
     <% end %>
 
     <% if @errors[:password_confirmation].present? %>
-      <%= "Password confirmation " + oxfordize_list(@errors[:password_confirmation]) %><br>
+      <%= "Confirm password " + oxfordize_list(@errors[:password_confirmation]) %><br>
     <% end %>
     <br>
   <% end %>
@@ -48,8 +48,7 @@
       
   </table>
   <div style="font-size: small">
-    Password should be 8-30 characters with at least one letter<br>
-    and one number. Special characters are invalid.
+    Password must contain at least 8 characters including 1 lower case letter, 1 upper case letter, 1 number, and 1 special character.
   </div>
   <br>
   <%= f.submit "Create Account", class: "button small" %>

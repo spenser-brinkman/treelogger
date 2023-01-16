@@ -34,11 +34,11 @@
 
 <div style="color:#FF0000">
   <% if @errors.present? && @errors["password"].present? %>
-    <%= "Password " + oxfordize_list(@errors["password"]) %><br><br>
+    <%= "New password " + oxfordize_list(@errors["password"]) %><br><br>
   <% end %>
 
   <% if @errors.present? && @errors["password_confirmation"].present? %>
-    <%= "Password confirmation " + oxfordize_list(@errors["password_confirmation"]) %><br><br>
+    <%= "Confirm new password " + oxfordize_list(@errors["password_confirmation"]) %><br><br>
   <% end %>
 </div>
 
