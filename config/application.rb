@@ -1,13 +1,10 @@
 require_relative 'boot'
 
-# To clean up unused routes, this...
-# require 'rails/all'
-# Is replaced by this:
 require 'active_record/railtie'
 # require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_view/railtie'
-require 'action_mailer/railtie'
+# require 'action_mailer/railtie'
 require 'active_job/railtie'
 require 'action_cable/engine'
 # require 'action_mailbox/engine'
