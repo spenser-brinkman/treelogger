@@ -45,6 +45,12 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-google-oauth2'
 
 group :development do
-  gem "capistrano", "~> 3.17"
-  gem "capistrano-rails", "~> 1.6"
+  gem 'capistrano', '~> 3.17', '>= 3.17.2'
+  gem 'capistrano-bundler', '~> 2.1'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.2'
+  # Use the gem that matches the remote server's version manager. (I use asdf locally and rbenv in production)
+  gem 'capistrano-rbenv', '~> 2.2'
+  # gem 'capistrano-asdf'
+  # gem 'capistrano-rvm
 end
