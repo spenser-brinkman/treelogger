@@ -1,5 +1,5 @@
 {
-  "name": "tree_logger",
+  "name": "treelogger",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
