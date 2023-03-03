@@ -28,6 +28,10 @@ group :development do
   gem 'spring'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  gem 'capistrano', '~> 3.4'
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.2'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano-rbenv', '~> 2.2'
 end
 
 group :test do
@@ -43,7 +47,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-google-oauth2'
-gem 'capistrano', '~> 3.4'
-gem 'capistrano-rails', '~> 1.6', '>= 1.6.2'
-gem 'capistrano-passenger', '~> 0.2.1'
-gem 'capistrano-rbenv', '~> 2.2'
