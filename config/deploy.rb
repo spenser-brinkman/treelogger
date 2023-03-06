@@ -10,7 +10,7 @@ set :rbenv_ruby, '3.2.1'
 set :nginx_server_name, 'spenserbrinkman.com'
 
 # Default branch is :master
-ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, 'main'
 
 # Default deploy_to directory is /var/www/treelogger
 # set :deploy_to, '/var/www/treelogger'
