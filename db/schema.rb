@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2021_01_06_232142) do
-  create_table "inspections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "inspections", force: :cascade do |t|
     t.integer "survey_id"
     t.integer "tree_id"
     t.integer "height"
@@ -21,29 +24,29 @@ ActiveRecord::Schema[7.0].define(version: 2021_01_06_232142) do
     t.integer "user_id"
   end
 
-  create_table "properties", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "properties", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
   end
 
-  create_table "species", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "species", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "surveys", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "surveys", force: :cascade do |t|
     t.integer "property_id"
     t.integer "user_id"
     t.date "date"
   end
 
-  create_table "trees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "trees", force: :cascade do |t|
     t.integer "species_id"
     t.string "name"
     t.integer "user_id"
     t.integer "property_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
     t.string "google_token"
