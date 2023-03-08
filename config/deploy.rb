@@ -7,6 +7,9 @@ set :repo_url, 'git@github.com:spenser-brinkman/treelogger.git'
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.1'
 
+set :pg_password, ENV['TREELOGGER_DATABASE_PASSWORD']
+set :pg_ask_for_password, true
+
 set :nginx_server_name, 'spenserbrinkman.com'
 
 # Default branch is :master
@@ -38,16 +41,18 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/webpack
 # set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :sudo, 'systemctl restart nginx'
-    end
-  end
-end
+# namespace :deploy do
+#   desc 'Restart application'
+#   task :restart do
+#     on roles(:app), in: :sequence, wait: 5 do
+#       execute 'systemctl restart nginx'
+#     end
+#   end
+# end
+set :passenger_restart_command, 'sudo -n systemctl restart nginx'
+set :passenger_restart_options, nil
