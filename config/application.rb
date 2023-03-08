@@ -16,16 +16,15 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module TreeLogger2
+module TreeLogger
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    
+
     # This removes a few unused routes created by active_storage
     initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
       app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}
     end
-   
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
