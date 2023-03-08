@@ -50,4 +50,5 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2.1'
   gem 'capistrano-rails', '~> 1.6', '>= 1.6.2'
   gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-postgresql'
 end
