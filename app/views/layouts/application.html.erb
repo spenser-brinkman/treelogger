@@ -8,14 +8,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <body>
     <br><div class="wrapper">
 
       <header>
         <span>
           <a class="logoLink" href=<%= root_path %>>
-            <img src="images/logo.png" alt="TreeLogger Logo" height="35" width="auto">TreeLogger
+            <%= image_tag("logo.png", alt: "TreeLogger Logo", height: 35, width: 'auto')%>TreeLogger
           </a>
         </span>
 
@@ -29,9 +29,7 @@
       </header>
       
       <br>
-      <center>
-      <%= yield %>
-      </center>
+      <center><%= yield %></center>
 
       <footer class="branding">
         <small>&copy; 2023 Spenser Brinkman</small>
