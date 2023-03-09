@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
   root to: 'sessions#welcome'
-  
+
   resources :users
 
   get 'login', to: 'sessions#new'
@@ -9,7 +8,7 @@ Rails.application.routes.draw do
   get 'auth/google_oauth2/callback', to: 'sessions#googleAuth', as: 'google_login'
   get 'auth/failure', to: redirect('/')
   get 'logout', to: 'sessions#destroy'
-  
+
   resources :properties do
     resources :trees, shallow: true do
       resources :inspections, shallow: true
@@ -18,9 +17,9 @@ Rails.application.routes.draw do
       resources :inspections, shallow: true
     end
   end
-  
-  resources :trees, only: [:show, :edit, :update, :destroy]
-  resources :surveys, only: [:show, :edit, :update, :destroy]
+
+  resources :trees, only: %i[show edit update destroy]
+  resources :surveys, only: %i[show edit update destroy]
 
   get 'delete_property', to: 'properties#delete_property_confirmation', as: 'delete_property'
   get 'delete_survey', to: 'surveys#delete_survey_confirmation', as: 'delete_survey'
@@ -30,5 +29,4 @@ Rails.application.routes.draw do
   get 'species_selection', to: 'trees#species_selection', as: 'species_selection'
   get 'properties/:property_id/trees/species/:species_id', to: 'trees#single_species_index', as: 'properties_trees_of_species'
   get 'properties/:id/tallest_tree', to: 'properties#tallest_tree', as: 'tallest_tree'
-
 end
