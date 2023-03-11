@@ -46,13 +46,5 @@ set :keep_releases, 5
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-# namespace :deploy do
-#   desc 'Restart application'
-#   task :restart do
-#     on roles(:app), in: :sequence, wait: 5 do
-#       execute 'systemctl restart nginx'
-#     end
-#   end
-# end
 set :passenger_restart_command, 'sudo -n systemctl restart nginx'
 set :passenger_restart_options, nil

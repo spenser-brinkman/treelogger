@@ -1,5 +1,4 @@
 class SurveysController < ApplicationController
-
   def index
     @property = Property.find_by(id: params[:property_id])
     @surveys = @property.surveys
@@ -55,12 +54,13 @@ class SurveysController < ApplicationController
     redirect_to property_path(@property)
   end
 
-  def new_survey                                   # Controller Action to initiate process of starting survey prior to choosing property
+  # Controller Action to initiate process of starting survey prior to choosing property
+  def new_survey
     @properties = current_user.properties.all
   end
-  
+
   private
-  
+
   def survey_params
     params.require(:survey).permit(:date)
   end
@@ -69,5 +69,4 @@ class SurveysController < ApplicationController
     @survey = current_user.surveys.find_by(id: params[:id])
     authorize(@survey)
   end
-
 end

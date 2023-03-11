@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :authentication, only: %i[new create]
 
-  skip_before_action :authentication, only: [:new, :create]
-  
   def new
     @user = User.new
     @errors = @user.errors
@@ -17,14 +16,14 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
   def show
   end
 
   def edit
     @errors = flash.alert
   end
-  
+
   def update
     if current_user.update(user_params)
       redirect_to current_user
@@ -33,7 +32,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(current_user)
     end
   end
-  
+
   # def delete_user_confirmation
   # end
 

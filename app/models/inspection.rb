@@ -1,5 +1,4 @@
 class Inspection < ApplicationRecord
-
   belongs_to :survey
   belongs_to :tree
   belongs_to :user
@@ -7,5 +6,4 @@ class Inspection < ApplicationRecord
   validates_presence_of :height, :dbh, :foliage
 
   scope :tallest, -> { where(height: self.maximum(:height)) }
-
 end

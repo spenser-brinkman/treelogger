@@ -1,5 +1,4 @@
 class TreesController < ApplicationController
-
   def index
     get_property
     @trees = @property.trees
@@ -8,7 +7,7 @@ class TreesController < ApplicationController
   def show
     get_tree
   end
-  
+
   def new
     @tree = Tree.new
     @tree.species = Species.new
@@ -68,9 +67,9 @@ class TreesController < ApplicationController
     @trees = @property.trees.of_species(params[:species_id])
     render 'trees/index'
   end
-  
+
   private
-  
+
   def tree_params
     params.require(:tree).permit(:name)
   end
@@ -82,14 +81,18 @@ class TreesController < ApplicationController
   def get_property
     @property = Property.find_by(id: params[:property_id])
   end
-    
+
   def select_or_create_species
-    if params[:tree][:species] == "" && params[:tree][:species_attributes][:name] != ""         # If user wants to enter new species
-      @species = Species.create(name: params[:tree][:species_attributes][:name])
-    else                                                                                           # If user simply selects from dropdown
-      @species = Species.find_by(id: params[:tree][:species])
-    end
+    species_name = params[:tree][:species_attributes][:name]
+    species_id = params[:tree][:species]
+
+    @species =
+      if species_id.blank? && species_name.present?
+        # User is submitting a new species
+        Species.create(name: species_name)
+      else
+        # User selected species from dropdown
+        Species.find_by(id: species_id)
+      end
   end
-
-
 end

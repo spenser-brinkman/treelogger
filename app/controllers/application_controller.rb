@@ -31,16 +31,17 @@ class ApplicationController < ActionController::Base
   end
 
   def today
-    DateTime.now.strftime("%Y-%m-%d")
+    DateTime.now.strftime('%Y-%m-%d')
   end
 
   def humanize_date(date)
-    date.strftime("%B %e, %Y")
+    date.strftime('%B %e, %Y')
   end
 
   def oxfordize_list(list)
     return list.join(' and ') if list.size < 3
-    list[-1] = "and " + list[-1]
+
+    list[-1] = "and #{list[-1]}"
     list.join(', ')
   end
 
@@ -61,9 +62,8 @@ class ApplicationController < ActionController::Base
   def current_survey(tree)
     tree.surveys.find_by(id: params[:survey]).inspections.find_by(tree_id: tree.id)
   end
-  
-  def recent_survey(resource)
-    resource.surveys.find_by(date: resource.surveys.maximum("date"))
-  end
 
+  def recent_survey(resource)
+    resource.surveys.find_by(date: resource.surveys.maximum('date'))
+  end
 end

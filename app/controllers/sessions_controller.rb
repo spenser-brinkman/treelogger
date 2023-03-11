@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  
   skip_before_action :authentication
 
   def welcome
@@ -7,7 +6,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
+
   def new
     @user = User.new
   end
@@ -47,7 +46,7 @@ class SessionsController < ApplicationController
   private
 
   def access_token
-    request.env["omniauth.auth"]
+    request.env['omniauth.auth']
   end
 
   def set_google_tokens(user)
@@ -59,5 +58,4 @@ class SessionsController < ApplicationController
     user.google_refresh_token = refresh_token if refresh_token.present?
     user.save
   end
-
 end

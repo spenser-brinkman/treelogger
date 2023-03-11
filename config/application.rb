@@ -23,7 +23,7 @@ module TreeLogger
 
     # This removes a few unused routes created by active_storage
     initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
-      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}
+      app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
     end
 
     # Settings in config/environments/* take precedence over those specified here.

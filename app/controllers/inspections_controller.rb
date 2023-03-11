@@ -1,5 +1,4 @@
 class InspectionsController < ApplicationController
-
   def new
     @survey = Survey.find_by(id: params[:survey])
     @inspection = Inspection.new
@@ -27,5 +26,4 @@ class InspectionsController < ApplicationController
   def inspection_params
     params.require(:inspection).permit(:height, :dbh, :foliage, :comments)
   end
-
 end
