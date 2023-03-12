@@ -33,7 +33,11 @@
       <center><%= yield %></center>
 
       <footer class="branding">
-        <small>&copy; 2023 Spenser Brinkman</small>
+        <%# <small>&copy; 2023 Spenser Brinkman</small> %>
+        <small>&copy; 2023 Spenser Brinkman | </small>
+        <small>
+          <%= link_to "Privacy", privacy_policy_path %>
+        </small>
 
         <span style="float:right;">
         <% if params[:controller] == "properties" && params[:action] == "show" %>
