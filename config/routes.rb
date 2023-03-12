@@ -29,4 +29,7 @@ Rails.application.routes.draw do
   get 'species_selection', to: 'trees#species_selection', as: 'species_selection'
   get 'properties/:property_id/trees/species/:species_id', to: 'trees#single_species_index', as: 'properties_trees_of_species'
   get 'properties/:id/tallest_tree', to: 'properties#tallest_tree', as: 'tallest_tree'
+
+  get 'privacy', to: 'misc#privacy', as: 'privacy'
+  get 'about', to: 'misc#about', as: 'about'
 end
