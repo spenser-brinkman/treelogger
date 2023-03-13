@@ -43,6 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development do
   gem 'capistrano', '~> 3.17', '>= 3.17.2'
