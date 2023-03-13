@@ -53,6 +53,14 @@
   <br>
   <%= f.submit "Create Account", class: "button small" %>
 <% end %>
-<br><br><br><br><br>
-Already have an account?<br><br>
+
+<br><br><br>
+Want to sign up using a Google account instead?
+<%= form_tag('/auth/google_oauth2', method: 'post') do %>
+  <button class="button small" type='submit'>Sign Up With Google</button>
+<% end %>
+
+<br>
+Already have an account?
+<br>
 <%= link_to "Log In", login_path, class: "button small" %>
