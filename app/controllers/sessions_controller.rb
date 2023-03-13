@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def googleAuth
+  def google_auth
     user = User.find_or_create_by(uid: access_token.uid) do |u|
       u.name = access_token.extra.raw_info.given_name
       u.email = access_token.extra.raw_info.email
