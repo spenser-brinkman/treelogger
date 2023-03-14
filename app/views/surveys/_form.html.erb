@@ -1,3 +1,3 @@
-  <%= f.date_field :date, min: "2020-01-01", max: today, value: @survey.date %>
+  <%= f.date_field :date, min: "2020-01-01", max: today, value: Date.today %>
   <br><br>
   <%= f.submit "Submit", class: "button small" %>
