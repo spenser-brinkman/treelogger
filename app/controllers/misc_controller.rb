@@ -6,6 +6,5 @@ class MiscController < ApplicationController
   end
 
   def privacy
-    render 'privacy'
   end
 end
