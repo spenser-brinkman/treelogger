@@ -2,7 +2,7 @@
 
 
 <% if @property.trees.any? { |tree| !tree.surveys.include?(@survey) } %>
-  These trees have not been logged on this survey yet:<br>
+  Trees that have not yet been logged on this survey:<br>
   <% @property.trees.each do |tree| %>
     <% if !tree.surveys.include?(@survey) %>
       <%= link_to tree.name, new_tree_inspection_path(tree, survey: @survey), class: "button" %>
