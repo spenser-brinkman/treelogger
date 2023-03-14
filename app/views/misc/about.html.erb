@@ -1,0 +1,113 @@
+<style>
+    * {
+        font-family: Sans-Serif !important;
+        text-align: left;
+    }
+
+    h1, h1 * {
+        font-size: 26px !important;
+        color: #000000 !important;
+        text-align: left;
+    }
+
+    h2, h2 * {
+        font-size: 19px !important;
+        color: #000000 !important;
+        border-bottom: none;
+        text-align: left;
+    }
+
+    h2#title {
+        color: #333 !important;
+        font-size: 24px !important;
+        line-height: 36px !important;
+        border-bottom: 2px solid #ccc;
+        text-align: center;
+    }
+
+    h3, h3 * {
+        font-size: 17px !important;
+        color: #000000 !important;
+    }
+
+    h4, h4 * {
+        font-size: 14px !important;
+        color: #595959 !important;
+    }
+
+    li, li *, p, p * {
+        font-size: 14px !important;
+        color: #595959 !important;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        font-size: 14px !important;
+        color: #595959 !important;
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    a.bluelink, a.bluelink * {
+        font-size: 14px !important;
+        color: #3030F1 !important;
+        word-break: break-word !important;
+    }
+
+    ul, ol {
+        padding-bottom: 1em;
+    }
+
+    ul {
+        list-style-type: square !important;
+    }
+
+    ol {
+        list-style-type: none;
+    }
+
+    table {
+        margin-bottom: 1em;
+    }
+</style>
+
+<body>
+    <h2 id="title">About</h2>
+    <h4><a href="#background">Background</a></h4>
+    <h4><a href="#usage">Usage</a></h4>
+    <h4><a href="#tech">Technical Information</a></h4>
+    <br>
+    <h3 id="background">Background</h3>
+    <p>TreeLogger is a simple application used for tracking surveys of properties' trees. TreeLogger users create and access any number of properties on their account, add and manage trees on their properties, and conduct surveys of those trees. By reviewing past surveys, users are able to gain valuable insights into tree growth rates, health patterns, and any number of other qualities.</p>
+
+    <h3 id="usage">Usage</h3>
+    <p>The first thing a new user will need to do is create a property record. You will be asked to give the property a name. This can be anything including addresses, building names, parcel numbers, etc. With a property created, you can now start adding trees to be surveyed.</p>
+
+    <p>Navigate to your new property's Trees page which you can start populating with trees by clicking "New Tree". After creating the tree with a name and species, you can go back to create more trees, or choose to start a survey with the "Log This Tree" button</p>
+
+    <p>Typically, you will be asked to select an existing survey to log a tree on. If you have not started any surveys on this property before, click "New Survey" to start a new one, where you will be prompted for a survey date. Surveys are able to be created for past dates so that users may choose to record data in batches of dates manually and enter them on TreeLogger in single sessions later on.</p>
+    <p>(Note: if a survey is started before all tree records for a property have been created, you will be able to return to the survey after the trees have been created.)</p>
+
+    <p>Once a survey has been started, choose a tree from the list to log on the survey. Input the tree's height, diameter, foliage density, and any additional optional comments, then finish by clicking "Log This Tree". The tree will be added to that survey's list of completed inspections, and you may continue to log more trees on the survey, view already-surveyed trees, or go back to create other surveys or manage other properties.</p>
+
+    <h3 id="tech">Technical Information</h3>
+    <p>TreeLogger is built and hosted with:</p>
+    <ul>
+        <li>Ruby on Rails 7.0.4.2</li>
+        <li>Ruby 3.2.1</li>
+        <li>Ubuntu 22.04</li>
+        <li>DigitalOcean Cloud Hosting</li>
+        <li>Passenger Rails Web Server</li>
+        <li>Nginx Reverse Proxy</li>
+        <li>Let's Encrypt SSL/TLS Certification</li>
+        <li>NameCheap Domain Registration</li>
+    </ul>
+    <br>
+    <p>You can find the public repo at <a href="https://www.github.com/spenser-brinkman/treelogger">github.com/spenser-brinkman/treelogger</a></p>
+
+</body>
