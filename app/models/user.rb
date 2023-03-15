@@ -2,9 +2,10 @@ class User < ApplicationRecord
   validates :name, presence: true
   validate :password_complexity
   validates_confirmation_of :password
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is invalid.' },
-                    uniqueness: { case_sensitive: false },
-                    length: { minimum: 4, maximum: 254 }
+  validates :email,
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is invalid.' },
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 4, maximum: 254 }
 
   has_secure_password
 
@@ -14,9 +15,9 @@ class User < ApplicationRecord
   has_many :inspections, through: :surveys
 
   def password_complexity
-    # pages.nist.gov/800-63-3 encourages password length over complexity
+    # pages.nist.gov/800-63-3 favors password length over complexity
     return if password.blank? || password =~ /\A(?=.*\S).{8,256}\z/
 
-    errors.add :password, 'does not meet requirements.'
+    errors.add :password, 'must contain at least 8 characters.'
   end
 end
