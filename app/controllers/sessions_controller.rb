@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       @user = User.new(email: params[:user][:email])
-      @error = "Invalid email or password. Please try again."
+      @error = 'Invalid email or password. Please try again.'
       render 'new'
     end
   end
