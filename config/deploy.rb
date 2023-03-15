@@ -32,8 +32,7 @@ set :branch, 'main'
 append :linked_files,
        'config/database.yml',
        'config/master.key',
-       'config/credentials/production.key',
-       'config/credentials/production.yml.enc'
+       'config/credentials/production.key'
 
 # Default value for linked_dirs is []
 append :linked_dirs,
