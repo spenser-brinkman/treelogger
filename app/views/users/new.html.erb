@@ -26,19 +26,19 @@
   <table>
     <tr>
       <td style="text-align: right;"><%= f.label :name %>&nbsp;</td>
-      <td><%= f.text_field :name, required: true %></td>
+      <td><%= f.text_field :name, placeholder: "Spruce Willis", required: true %></td>
     </tr>
     <tr><td><br></td></tr>
 
     <tr>
       <td style="text-align: right;"><%= f.label :email %>&nbsp;</td>
-      <td><%= f.text_field :email, required: true %></td>
+      <td><%= f.text_field :email, placeholder: "hello@example.com", required: true %></td>
     </tr>
     <tr><td><br></td></tr>
     
     <tr>
       <td style="text-align: right;"><%= f.label :password %>&nbsp;</td>
-      <td><%= f.password_field :password, required: true %></td>
+      <td><%= f.password_field :password, placeholder: "Password", required: true %></td>
     </tr>
 
     <tr>
@@ -48,15 +48,14 @@
       
   </table>
   <div style="font-size: small">
-    Password must contain at least 8 characters including 1 lower case letter, 1 upper case letter, 1 number, and 1 special character.
+    <p><small>(Your password must contain at least 8 characters)</small></p>
   </div>
-  <br>
   <%= f.submit "Create Account", class: "button small" %>
 <% end %>
 
 <br><br><br>
 Want to sign up using a Google account instead?
-<%= form_tag('/auth/google_oauth2', method: 'post') do %>
+<%= form_tag('auth/google_oauth2', method: 'post') do %>
   <button class="button small" type='submit'>Sign Up With Google</button>
 <% end %>
 

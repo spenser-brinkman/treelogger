@@ -28,12 +28,8 @@
 
 <br><br><br>
 Created your account through Google?
-<%= form_tag('/auth/google_oauth2', method: 'post') do %>
-  <button class="button small" type='submit'>Log In With Google</button>
-<% end %>
+<%= button_to "Log In With Google", google_login_path, class: "button small" %>
 
 <br>
-Don't have an account?
-<%= form_tag('/users/new', method: 'get') do %>
-  <button class="button small" type='submit'>Create an Account</button>
-<% end %>
+Don't have an account?<br>
+<%= link_to "Create an Account", new_user_path, class: "button small" %>
