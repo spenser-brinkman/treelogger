@@ -116,8 +116,9 @@
   }
 
   .small {
-    padding: 7px 14px;
+    padding: 8px 14px;
     font-size: 12px;
+    line-height: 18px;
   }
 
   .discrete {
@@ -126,7 +127,7 @@
     font-size: 11px;
   }
 
-  button:hover {
+  .button:hover {
     background-color: white;
     color: black
   }
