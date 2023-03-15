@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is invalid.' },
-            uniqueness: { case_sensitive: false },
+            uniqueness: { case_sensitive: false, message: 'is associated with an existing account.' },
             length: { minimum: 4, maximum: 254 }
 
   has_secure_password

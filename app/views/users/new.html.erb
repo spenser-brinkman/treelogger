@@ -8,7 +8,7 @@
     <% end %>
 
     <% if @errors[:email].present? %>
-      <%= "Email " + oxfordize_list(@errors[:email]) %><br>
+      <%= "Provided email address " + oxfordize_list(@errors[:email]) %><br>
     <% end %>
 
     <% if @errors[:password].present? %>
