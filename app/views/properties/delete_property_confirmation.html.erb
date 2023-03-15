@@ -1,5 +1,17 @@
-<h2>Are you sure you want to delete this property?</h2>
-
-<%= button_to "Yes, delete this property", @property, method: "delete", class: "button" %>
+<h2>Delete <%= @property.title %>?</h2>
+<p>Are you sure you want to delete this property?</p>
+<p>All associated trees and survey will also be deleted.</p>
+<p>There is no way to reverse this action.</p>
 
 <%= button_to "No, go back", edit_property_path(@property), method: "get", class: "button" %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= button_to "Yes, delete #{@property.title}", @property, method: "delete", class: "button small" %>
