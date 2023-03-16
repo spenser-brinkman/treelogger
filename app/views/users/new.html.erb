@@ -55,7 +55,7 @@
 
 <br><br><br>
 Want to sign up using a Google account instead?
-<%= form_tag('auth/google_oauth2', method: 'post') do %>
+<%= form_tag(google_login_path, method: 'post') do %>
   <button class="button small" type='submit'>Sign Up With Google</button>
 <% end %>
 
