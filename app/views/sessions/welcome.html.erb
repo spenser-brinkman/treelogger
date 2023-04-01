@@ -1,4 +1,12 @@
-<h2>Welcome!</h2>
+<% if logged_in? %>
+    <h2><%= greet %><%= current_user.name %>!</h2>
+    <%= link_to "Properties", properties_path, class: "button small" %>
+    <%= link_to "New Survey", start_new_survey_path, class: "button small" %>
+    <%= link_to "Edit Account", edit_user_path(current_user), class: "button small" %>
 
-<%= link_to "Log In", login_path, class: "button" %>
-<%= link_to "Register", new_user_path, class: "button" %>
+<% else %>
+    <h2>Welcome!</h2>
+    <%= link_to "Log In", login_path, class: "button" %>
+    <%= link_to "Register", new_user_path, class: "button" %>
+
+<% end %>

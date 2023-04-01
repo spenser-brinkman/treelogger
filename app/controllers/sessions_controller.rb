@@ -2,9 +2,6 @@ class SessionsController < ApplicationController
   skip_before_action :authentication
 
   def welcome
-    if logged_in?
-      redirect_to user_path(current_user)
-    end
   end
 
   def new
