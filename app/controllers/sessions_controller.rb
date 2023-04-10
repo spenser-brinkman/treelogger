@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     # Defined as private method below. Not utilized, but has been retained in case TreeLogger ends up implementing use of the Google API
     set_google_tokens(user)
 
-    redirect_to user
+    redirect_to root_path
   end
 
   def destroy
