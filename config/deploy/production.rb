@@ -9,3 +9,5 @@ set :ssh_options, {
   forward_agent: true,
   auth_methods: ['publickey']
 }
+
+set :database_password, ENV['TREELOGGER_DATABASE_PASSWORD']

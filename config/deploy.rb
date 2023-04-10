@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:spenser-brinkman/treelogger.git'
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.1'
 
-set :pg_password, Rails.application.credentials.database_password
+set :pg_password, ENV['TREELOGGER_DATABASE_PASSWORD']
 set :pg_ask_for_password, true
 
 set :nginx_server_name, 'spenserbrinkman.com'
