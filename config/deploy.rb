@@ -59,4 +59,3 @@ set :keep_releases, 5
 
 set :passenger_restart_command, 'sudo -n systemctl restart nginx'
 set :passenger_restart_options, nil
-set :passenger_instance_registry_dir, "/var/run/treelogger_passenger_instances"
