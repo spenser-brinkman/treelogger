@@ -46,7 +46,7 @@ append :linked_dirs,
        'storage'
 
 # Default value for default_env is {}
-set :default_env, { 'RAILS_ENV' => fetch(:stage) }
+# set :default_env, { path: '/opt/ruby/bin:$PATH' }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
