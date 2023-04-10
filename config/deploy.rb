@@ -7,8 +7,8 @@ set :repo_url, 'git@github.com:spenser-brinkman/treelogger.git'
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.1'
 
-set :pg_password, ENV['TREELOGGER_DATABASE_PASSWORD']
-set :pg_ask_for_password, true
+#set :pg_password, ENV['TREELOGGER_DATABASE_PASSWORD']
+# set :pg_ask_for_password, true
 
 set :nginx_server_name, 'spenserbrinkman.com'
 
@@ -46,7 +46,7 @@ append :linked_dirs,
        'storage'
 
 # Default value for default_env is {}
-# set :default_env, { path: '/opt/ruby/bin:$PATH' }
+set :default_env, { 'RAILS_ENV' => fetch(:stage) }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
